@@ -1,0 +1,122 @@
+version: "3.1"
+
+stories:
+  # happy path scenario
+  - story: check stock
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: check_stock
+      entities:
+      - product_category: "jeans"
+    - action: action_check_stock
+    - intent: goodbye
+    - action: utter_goodbye
+
+  # scenario where product is not in stock
+  - story: check stock - out of stock
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: check_stock
+      entities:
+      - product_category: "pants"
+    - action: action_check_stock
+    - intent: goodbye
+    - action: utter_goodbye
+
+  # scenario where user orders stock
+  - story: order stock
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: order_stock
+      entities:
+      - product_quantity: 5
+      - product_name: "green sweater"
+    - action: utter_order_stock
+    - intent: goodbye
+    - action: utter_goodbye
+
+  # scenario where user cancels order
+  - story: cancel order
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: cancel_order
+      entities:
+      - product_quantity: 2
+      - product_name: "green jacket"
+    - action: utter_cancel_order
+    - intent: goodbye
+    - action: utter_goodbye
+
+  # scenario where user requests inventory report
+  - story: show inventory report
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: show_report
+    - action: utter_show_report
+    - intent: goodbye
+    - action: utter_goodbye
+
+  # scenario where user searches for products by brand
+  - story: search products by brand
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: search_product_by_brand
+      entities:
+      - product_brand: "Nike"
+    - action: utter_search_product_by_brand
+    - intent: goodbye
+    - action: utter_goodbye
+
+  # scenario where user searches for products by material
+  - story: search products by material
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: search_product_by_material
+      entities:
+      - product_material: "cotton"
+    - action: utter_search_product_by_material
+    - intent: goodbye
+    - action: utter_goodbye
+
+  # scenario where user searches for products by category
+  - story: search products by category
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: search_product_by_category
+      entities:
+      - product_category: "shirts"
+    - action: utter_search_product_by_category
+    - intent: goodbye
+    - action: utter_goodbye
+
+  # scenario where user searches for products by color
+  - story: search products by color
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: search_product_by_color
+      entities:
+      - product_color: "blue"
+    - action: utter_search_product_by_color
+    - intent: goodbye
+    - action: utter_goodbye
+
+  # scenario where user searches for products by size
+  - story: search products by size
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: search_product_by_size
+      entities:
+      - product_size: "L"
+    - action: utter_search_product_by_size
+    - intent: goodbye
+    - action: utter_goodbye

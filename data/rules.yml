@@ -1,0 +1,67 @@
+version: "3.1"
+
+rules:
+
+- rule: Say hello anytime the user says hello
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+# rule to handle product stock check
+- rule: check_stock
+  steps:
+  - intent: check_stock
+  - action: action_check_stock
+
+# rule to handle order stock
+- rule: order_stock
+  steps:
+  - intent: order_stock
+  - action: utter_order_stock
+
+# rule to handle cancel order
+- rule: cancel_order
+  steps:
+  - intent: cancel_order
+  - action: utter_cancel_order
+
+# rule to handle showing inventory report
+- rule: show_report
+  steps:
+  - intent: show_report
+  - action: utter_show_report
+
+# rule to handle searching for products by brand
+- rule: search_product_by_brand
+  steps:
+  - intent: search_product_by_brand
+  - action: utter_search_product_by_brand
+
+# rule to handle searching for products by material
+- rule: search_product_by_material
+  steps:
+  - intent: search_product_by_material
+  - action: utter_search_product_by_material
+
+# rule to handle searching for products by category
+- rule: search_product_by_category
+  steps:
+  - intent: search_product_by_category
+  - action: utter_search_product_by_category
+
+# rule to handle searching for products by color
+- rule: search_product_by_color
+  steps:
+  - intent: search_product_by_color
+  - action: utter_search_product_by_color
+
+# rule to handle searching for products by size
+- rule: search_product_by_size
+  steps:
+  - intent: search_product_by_size
+  - action: utter_search_product_by_size
