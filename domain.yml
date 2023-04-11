@@ -1,0 +1,107 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - check_stock
+  - order_stock
+  - cancel_order
+  - show_report
+  - search_product_by_brand
+  - search_product_by_material
+  - search_product_by_category
+  - search_product_by_color
+  - search_product_by_size
+
+entities:
+  - user_name
+  - product_name
+  - product_category
+  - product_material
+  - product_brand
+  - product_color
+  - product_size
+  - product_quantity
+
+slots:
+  user_name:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: user_name
+  product_name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: product_name
+  product_category:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: product_category
+  product_material:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: product_material
+  product_brand:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: product_brand
+  product_color:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: product_color
+  product_size:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: product_size
+  product_quantity:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: product_quantity
+
+responses:
+  utter_greet:
+    - text: "Hello {user_name}! Welcome to our clothing store. How can I assist you today?"
+    - text: "Hi there! Is there anything I can help you with?"
+    - text: "Hey! How may I assist you with your clothing needs?"
+    - text: "Hello {user_name}! How can I help you find the perfect outfit today?"
+    - text: "Good day {user_name}! What can I help you find today?"
+  utter_goodbye:
+    - text: "Goodbye! Have a nice day."
+    - text: "Bye! Take care!"
+    - text: "Goodbye! Have a great day!"
+    - text: "See you later!"
+  utter_default:
+    - text: "Sorry, I didn't understand. Can you please rephrase?"
+    - text: "I'm not sure what you're asking. Could you please clarify?"
+    - text: "I'm not sure I understood your query correctly. Can you please repeat it?"
+    - text: "I'm having difficulty processing your query. Can you please try asking it in a simpler way?"
+  utter_order_stock:
+    - text: "The order for {product_quantity} {product_name} has been placed successfully."
+  utter_cancel_order:
+    - text: "The order for {product_name} has been cancelled successfully."
+  utter_show_report:
+    - text: "The report is being generated. Please wait for a moment." 
+  utter_search_product_by_brand:
+    - text: "Here are the products of {product_brand} : None."
+  utter_search_product_by_material:
+    - text: "Here are the products made of {product_material} : None."
+  utter_search_product_by_category:
+    - text: "Here are the {product_category} available : None."
+  utter_search_product_by_color:
+    - text: "Here are the products available for {product_color} color : None."
+  utter_search_product_by_size:
+    - text: "Here are the products available for {product_size} size : None."
+
+actions:
+  - action_check_stock
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
