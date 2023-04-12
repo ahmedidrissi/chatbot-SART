@@ -18,11 +18,6 @@ rules:
   - intent: check_stock
   - action: action_check_stock
 
-# rule to handle order stock
-- rule: order_stock
-  steps:
-  - intent: order_stock
-  - action: utter_order_stock
 
 # rule to handle cancel order
 - rule: cancel_order
@@ -65,3 +60,15 @@ rules:
   steps:
   - intent: search_product_by_size
   - action: utter_search_product_by_size
+
+# rule to handle order stock
+- rule: confirm_stock
+  steps:
+  - intent: order_stock
+  - action: utter_confirm_order
+
+# rule to confirm the order
+- rule: order_stock
+  steps:
+  - intent: confirm_order
+  - action: utter_order_stock  

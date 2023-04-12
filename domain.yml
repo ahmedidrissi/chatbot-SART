@@ -12,6 +12,10 @@ intents:
   - search_product_by_category
   - search_product_by_color
   - search_product_by_size
+  - confirm_order
+  - thanks
+  
+  
 
 entities:
   - user_name
@@ -65,6 +69,15 @@ slots:
     - type: from_entity
       entity: product_quantity
 
+  forms:
+  product_form:
+   required_slots:
+    - product_name
+    - product_size
+    - product_color
+    - product_quantity
+
+
 responses:
   utter_greet:
     - text: "Hello {user_name}! Welcome to our clothing store. How can I assist you today?"
@@ -98,6 +111,20 @@ responses:
     - text: "Here are the products available for {product_color} color : None."
   utter_search_product_by_size:
     - text: "Here are the products available for {product_size} size : None."
+  utter_confirm_order:
+    - text: "Would you like to confirm your order for the {product_name} ?"
+    - text: "Can I confirm your order for the {product_name} ?"
+    - text: "Do you want to proceed with your order for the {product_name}?"
+    - text: "Shall I place an order for the {product_name} ?"
+    - text: "Are you ready to confirm your order for the {product_name} ?" 
+  utter_size:
+    - text: "What size would you like the {product_name} to be?"
+  utter_color:
+    - text: "what color would you like of the {product_name}?"
+  utter_quantity:
+    - text: "How much of the {product_name} you want?"   
+
+  
 
 actions:
   - action_check_stock

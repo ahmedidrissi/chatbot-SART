@@ -94,3 +94,28 @@ nlu:
     - What sizes do you have?
     - I want [XL](product_size) size
     - Give me the [L](product_size) size please
+
+- intent: confirm_order
+  examples: |
+    - Yes, I confirm the order for  the [Pleated Midi Skirt](product_name).
+    - I'm ready to place the order for the [Pleated Midi Skirt](product_name).
+    - Please proceed with the order for the [Pleated Midi Skirt](product_name).
+    - I confirm my order for [2](product_quantity) of the [Pleated Midi Skirt](product_name).
+    - Yes, I want to order [2](product_quantity) of the [Pleated Midi Skirt](product_name).
+    - I'm happy to confirm the order for [2](product_quantity) of the [Pleated Midi Skirt](product_name).
+    - Yes, I confirm the order .
+    - I'm ready to place the order for the [Pleated Midi Skirt](product_name).
+    - Please proceed with the order for the [Pleated Midi Skirt](product_name).
+    - I confirm my order for.
+    - Yes, I want to order  the [Pleated Midi Skirt](product_name).
+    - I'm happy to confirm the order. "
+    - yes 
+
+- intent: thanks
+  examples: |
+    - Thank you
+    - Thanks for your help!
+    - Thanks
+    - Thanks for the help
+
+

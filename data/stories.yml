@@ -25,18 +25,7 @@ stories:
     - intent: goodbye
     - action: utter_goodbye
 
-  # scenario where user orders stock
-  - story: order stock
-    steps:
-    - intent: greet
-    - action: utter_greet
-    - intent: order_stock
-      entities:
-      - product_quantity: 5
-      - product_name: "green sweater"
-    - action: utter_order_stock
-    - intent: goodbye
-    - action: utter_goodbye
+  
 
   # scenario where user cancels order
   - story: cancel order
@@ -120,3 +109,20 @@ stories:
     - action: utter_search_product_by_size
     - intent: goodbye
     - action: utter_goodbye
+
+# scenario where you confirm an order
+  - story: order_and_confirm 
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: order_stock
+      entities:
+      - product_quantity: 5
+      - product_name: "green sweater"
+    - action: utter_confirm_order
+    - intent: confirm_order
+    - action: utter_order_stock
+    - intent: goodbye
+    - action: utter_goodbye
+
+      
