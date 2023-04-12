@@ -22,9 +22,33 @@ nlu:
 
 - intent: greet_with_name
   examples: | 
-    - hey there i am [samira alaoui](user_name)
-    - hi my name is [omar ibn sina](user_name)  
-    - hello i'm [ahmed](user_name)
+    - hey there i am [Samira Alaoui](user_name)
+    - hi my name is [Omar Ibn Sina](user_name)  
+    - hello i'm [Ahmed Idrissi](user_name)
+    - hey there my name is [Mustapha Khalid](user_name)
+    - hi i'm [Salim](user_name)
+  
+- intent: thanks
+  examples: |
+    - Thank you
+    - Thanks for your help!
+    - Thanks
+    - Thanks for the help
+    - ty
+
+- intent: help
+  examples: |
+    - Can you help me?
+    - I need help
+    - Assist me please 
+    - Help
+
+- intent: who_are_you
+  examples: |
+    - Who are you?
+    - Are you a human?
+    - Are you a Chatbot?
+
 - intent: goodbye
   examples: |
     - cu
@@ -38,7 +62,7 @@ nlu:
     - bye bye
     - see you later
 
-- intent: check_stock
+- intent: order_stock
   examples: |
     - Do you have [jeans](product_category) in stock?
     - How many [shirts](product_category) do you have available?
@@ -46,17 +70,18 @@ nlu:
     - Can you tell me if you have [t-shirts](product_category) in stock?
     - Do you have any [jackets](product_category) in stock?
     - How many [dresses](product_category) do you have available?
-
-- intent: order_stock
-  examples: |
-    - I would like to order [3](product_quantity) of [bomber jackets](product_name)
-    - Can you please order [5](product_quantity) of [Ripped Skinny Jeans](product_name) for me?
-    - I need to restock my inventory with [1](product_quantity) of [Turtleneck Sweater](product_name)
+    - Show me [jeans](product_category)
+    - What kind of [shirt](product_category) do you have?
+    - Can you show me [shoes](product_category)?
+    - What products do you have from [Nike](product_brand)?
+    - I'm interested in [Zara](product_brand) products
+    - Can you show me [Mango](product_brand) products?
 
 - intent: cancel_order
   examples: |
     - Can you cancel my order for [2](product_quantity) of [Pleated Midi Skirt](product_name)?
     - I no longer need [10](product_quantity) of [Cropped Hoodie](product_name). Can you please cancel the order?
+    - Cancel the order
 
 - intent: show_report
   examples: |
@@ -65,71 +90,15 @@ nlu:
     - Can you give me an overview of my stock levels?
     - Show me a report of my stock levels
 
-- intent: search_product_by_brand
-  examples: |
-    - What products do you have from [Nike](product_brand)?
-    - I'm interested in [Zara](product_brand) products
-    - Can you show me [Mango](product_brand) products?
-
-- intent: search_product_by_material
-  examples: |
-    - Show me products made of [cotton](product_material)
-    - What products do you have made of [polyester](product_material)?
-    - Can you show me products made of [nylon](product_material)?
-
-- intent: search_product_by_category
-  examples: |
-    - Show me [jeans](product_category)
-    - What kind of [shirt](product_category) do you have?
-    - Can you show me [shoes](product_category)?
-
-- intent: search_product_by_color
-  examples: |
-    - Show me all colors available
-    - What colors do you have?
-    - I want the [green](product_color) colors
-    - Do you have [blue](product_color) color for this
-
-- intent: search_product_by_size
-  examples: |
-    - Show me all sizes available
-    - What sizes do you have?
-    - I want [XL](product_size) size
-    - Give me the [L](product_size) size please
-
 - intent: confirm_order
   examples: |
     - Yes, I confirm the order for  the [Pleated Midi Skirt](product_name).
-    - I'm ready to place the order for the [Pleated Midi Skirt](product_name).
+    - I'm ready to place the order for the [green jeans](product_name).
     - Please proceed with the order for the [Pleated Midi Skirt](product_name).
     - I confirm my order for [2](product_quantity) of the [Pleated Midi Skirt](product_name).
     - Yes, I want to order [2](product_quantity) of the [Pleated Midi Skirt](product_name).
     - I'm happy to confirm the order for [2](product_quantity) of the [Pleated Midi Skirt](product_name).
     - Yes, I confirm the order .
-    - I'm ready to place the order for the [Pleated Midi Skirt](product_name).
-    - Please proceed with the order for the [Pleated Midi Skirt](product_name).
     - I confirm my order for.
-    - Yes, I want to order  the [Pleated Midi Skirt](product_name).
     - I'm happy to confirm the order. "
-    - yes 
-
-- intent: thanks
-  examples: |
-    - Thank you
-    - Thanks for your help!
-    - Thanks
-    - Thanks for the help
-
-- intent: help
-  examples: |
-    - Can you help me?
-    - I need help
-    - Assist me please 
-
-- intent: who_are_you
-  examples: |
-    - Who are you?
-    - Are you a human?
-    - Are you a Chatbot?
-
-
+    - Yes I confirm
