@@ -2,6 +2,7 @@ version: "3.1"
 
 intents:
   - greet
+  - greet_with_name
   - goodbye
   - check_stock
   - order_stock
@@ -14,6 +15,9 @@ intents:
   - search_product_by_size
   - confirm_order
   - thanks
+  - who_are_you
+  - help
+  
   
   
 
@@ -69,7 +73,7 @@ slots:
     - type: from_entity
       entity: product_quantity
 
-  forms:
+forms:
   product_form:
    required_slots:
     - product_name
@@ -80,11 +84,13 @@ slots:
 
 responses:
   utter_greet:
-    - text: "Hello {user_name}! Welcome to our clothing store. How can I assist you today?"
     - text: "Hi there! Is there anything I can help you with?"
     - text: "Hey! How may I assist you with your clothing needs?"
+  utter_greet_with_name:
+    - text: "Hello {user_name}! Welcome to our clothing store. How can I assist you today?"
     - text: "Hello {user_name}! How can I help you find the perfect outfit today?"
     - text: "Good day {user_name}! What can I help you find today?"
+     
   utter_goodbye:
     - text: "Goodbye! Have a nice day."
     - text: "Bye! Take care!"
@@ -122,12 +128,23 @@ responses:
   utter_color:
     - text: "what color would you like of the {product_name}?"
   utter_quantity:
-    - text: "How much of the {product_name} you want?"   
+    - text: "How much of the {product_name} you want?"  
+  utter_welcome:
+    - text: "No problem, happy to help!"
+    - text:  "I'm glad I could assist you!"
+  utter_help:
+    - text: "Of course! What do you need help with?"
+    - text : "I'm here to assist you. What do you need help with?"  
+  utter_name:
+    - text : "I'm Chatbot S.A.R.T, your personal Style Assistant and Retail Technology."
+    - text : "I'm a Chatbot.My name is S.A.R.T, which stands for Style Assistant and Retail Technology."
+    - text : "I'm a Chatbot. Call me S.A.R.T, which is short for Style Assistant and Retail Technology."  
 
   
 
 actions:
   - action_check_stock
+  - validate_product_form
 
 session_config:
   session_expiration_time: 60

@@ -61,14 +61,56 @@ rules:
   - intent: search_product_by_size
   - action: utter_search_product_by_size
 
-# rule to handle order stock
-- rule: confirm_stock
-  steps:
-  - intent: order_stock
-  - action: utter_confirm_order
 
 # rule to confirm the order
 - rule: order_stock
   steps:
   - intent: confirm_order
   - action: utter_order_stock  
+
+#rule to activate the form of the product
+- rule:  Activate Product Form
+  steps:
+  - intent: order_stock
+  - action: product_form
+  - active_loop: product_form
+
+#rule to submits form when the required intents are validated
+- rule: Submit Product Form
+  condition:
+  - active_loop: product_form
+  steps:
+  - action: product_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_confirm_order
+
+#rule to say hello with saying the name of the user if he gived his name
+- rule: Say hello anytime the user says hello
+  steps:
+  - intent: greet_with_name
+  - action: utter_greet_with_name
+
+#rule to say welcome when the user thank you
+- rule: Say welcome when user say thanks
+  steps:
+  - intent: thanks
+  - action: utter_welcome
+
+#rule to say that you can help if the user asks
+- rule: offer help if user asks
+  steps:
+  - intent: help
+  - action: utter_help
+
+#rule to say you are a chatbot and a name if asked
+- rule: say name when asked
+  steps:
+  - intent: who_are_you
+  - action: utter_name
+
+
+
+
+

@@ -110,19 +110,88 @@ stories:
     - intent: goodbye
     - action: utter_goodbye
 
-# scenario where you confirm an order
-  - story: order_and_confirm 
+
+
+# scenario where SART validate the product form and the user confirm the order
+  - story: validate product form and confirm 
     steps:
     - intent: greet
     - action: utter_greet
     - intent: order_stock
-      entities:
+    - action: product_form
+    - active_loop: product_form
+    - slot_was_set:
+      - requested_slot: product_size
+    - slot_was_set:
+      - product_size: L
+    - slot_was_set:
+      - product_size: L  
+    - slot_was_set:
+      - requested_slot: product_color
+    - slot_was_set:
+      - product_color: blaaaack
+    - slot_was_set:
+      - product_color: null
+    - slot_was_set:
+      - requested_slot: product_color
+    - slot_was_set:
+      - product_color: black
+    - slot_was_set:
+      - product_color: black  
+    - slot_was_set:
+      - requested_slot: product_quantity
+    - slot_was_set:
       - product_quantity: 5
-      - product_name: "green sweater"
+    - slot_was_set:
+      - product_quantity: 5
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
     - action: utter_confirm_order
     - intent: confirm_order
     - action: utter_order_stock
     - intent: goodbye
     - action: utter_goodbye
 
-      
+
+# scenario where SART validate the product form and the user cancel the order
+  - story: validate product form and cancel 
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: order_stock
+    - action: product_form
+    - active_loop: product_form
+    - slot_was_set:
+      - requested_slot: product_size
+    - slot_was_set:
+      - product_size: L
+    - slot_was_set:
+      - product_size: L  
+    - slot_was_set:
+      - requested_slot: product_color
+    - slot_was_set:
+      - product_color: blaaaack
+    - slot_was_set:
+      - product_color: null
+    - slot_was_set:
+      - requested_slot: product_color
+    - slot_was_set:
+      - product_color: black
+    - slot_was_set:
+      - product_color: black  
+    - slot_was_set:
+      - requested_slot: product_quantity
+    - slot_was_set:
+       - product_quantity: 5
+    - slot_was_set:
+      - product_quantity: 5
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    - action: utter_confirm_order
+    - intent: cancel_order
+    - action: utter_cancel_order
+    - intent: goodbye
+    - action: utter_goodbye
+

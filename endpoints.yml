@@ -35,8 +35,10 @@ action_endpoint:
 # Event broker which all conversation events should be streamed to.
 # https://rasa.com/docs/rasa/event-brokers
 
+tracker_store:
+  type: sql
+
 #event_broker:
-#  url: localhost
 #  username: username
 #  password: password
 #  queue: queue

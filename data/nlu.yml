@@ -7,8 +7,6 @@ nlu:
     - hi
     - hey
     - hello
-    - hello i'm [ahmed](user_name)
-    - hi my name is [omar ibn sina](user_name)
     - howdy
     - sup
     - hello there
@@ -16,13 +14,17 @@ nlu:
     - good evening
     - moin
     - hey there
-    - hey there i am [samira alaoui](user_name)
     - let's go
     - hey dude
     - goodmorning
     - goodevening
     - good afternoon
 
+- intent: greet_with_name
+  examples: | 
+    - hey there i am [samira alaoui](user_name)
+    - hi my name is [omar ibn sina](user_name)  
+    - hello i'm [ahmed](user_name)
 - intent: goodbye
   examples: |
     - cu
@@ -117,5 +119,17 @@ nlu:
     - Thanks for your help!
     - Thanks
     - Thanks for the help
+
+- intent: help
+  examples: |
+    - Can you help me?
+    - I need help
+    - Assist me please 
+
+- intent: who_are_you
+  examples: |
+    - Who are you?
+    - Are you a human?
+    - Are you a Chatbot?
 
 
