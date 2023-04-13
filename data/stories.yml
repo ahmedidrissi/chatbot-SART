@@ -6,17 +6,8 @@ stories:
     steps:
     - intent: greet
     - action: utter_greet
-    - intent: who_are_you
-    - action: utter_who_are_you
-    - intent: goodbye
-    - action: utter_goodbye
-
-  # scenario where user confirm order
-    steps:
-    - intent: greet
-    - action: utter_greet
-    - intent: confirm_order
-    - action: utter_confirm_order
+    - intent: bot_challenge
+    - action: utter_bot_challenge
     - intent: goodbye
     - action: utter_goodbye
 
@@ -29,3 +20,98 @@ stories:
     - action: utter_show_report
     - intent: goodbye
     - action: utter_goodbye
+
+  - story: interactive_story_1
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: buy_product
+    - action: product_form
+    - active_loop: product_form
+    - slot_was_set:
+      - requested_slot: product_category
+    - slot_was_set:
+      - product_category: jeans
+    - slot_was_set:
+      - requested_slot: product_color
+    - slot_was_set:
+      - product_color: black
+    - slot_was_set:
+      - requested_slot: product_size
+    - slot_was_set:
+      - product_size: L
+    - slot_was_set:
+      - requested_slot: product_name
+    - slot_was_set:
+      - product_name: Blue Jean
+    - slot_was_set:
+      - requested_slot: product_quantity
+    - slot_was_set:
+      - product_quantity: 5
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    - action: utter_submit
+    - action: utter_product_slots
+    - intent: goodbye
+    - action: utter_goodbye
+
+  - story: interactive_story_2
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: buy_roduct
+    - action: product_form
+    - active_loop: product_form
+    - intent: stop
+    - action: utter_ask_continue
+    - intent: affirm
+    - action: action_deactivate_loop
+    - active_loop: null
+
+  - story: interactive_story_3
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: buy_roduct
+    - action: product_form
+    - active_loop: product_form
+    - intent: stop
+    - action: utter_ask_continue
+    - intent: deny
+    - action: product_form
+    - active_loop: product_form
+
+  - story: interactive_story_4
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: buy_product
+    - action: product_form
+    - active_loop: product_form
+    - slot_was_set:
+      - requested_slot: product_category
+    - intent: stop
+    - action: utter_ask_continue
+    - intent: affirm
+    - action: action_deactivate_loop
+    - active_loop: null
+
+  - story: interactive_story_5
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: buy_product
+    - action: product_form
+    - active_loop: product_form
+    - slot_was_set:
+      - requested_slot: product_category
+    - slot_was_set:
+      - product_category: shirts
+    - slot_was_set:
+      - requested_slot: product_color
+    - intent: stop
+    - action: utter_ask_continue
+    - intent: affirm
+    - action: action_deactivate_loop
+    - active_loop: null

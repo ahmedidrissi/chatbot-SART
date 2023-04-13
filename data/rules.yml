@@ -29,8 +29,8 @@ rules:
 #rule to say you are a chatbot and a name if asked
 - rule: say name when asked
   steps:
-  - intent: who_are_you
-  - action: utter_name
+  - intent: bot_challenge
+  - action: utter_bot_challenge
 
 #rule to say goodbye when the user say goodbye
 - rule: Say goodbye anytime the user says goodbye
@@ -53,7 +53,7 @@ rules:
 #rule to activate the form of the product
 - rule:  Activate Product Form
   steps:
-  - intent: order_stock
+  - intent: buy_product
   - action: product_form
   - active_loop: product_form
 
@@ -66,4 +66,17 @@ rules:
   - active_loop: null
   - slot_was_set:
     - requested_slot: null
-  - action: utter_confirm_order
+  - action: utter_submit
+  - action: utter_product_slots
+
+- rule: Interruption in Pizza Form
+  condition:
+  # Condition that form is active.
+  - active_loop: product_form
+  steps:
+  # This unhappy path handles the case of an intent `bot_challenge`.
+  - intent: bot_challenge
+  - action: utter_bot_challenge
+  # Return to form after handling the `bot_challenge` intent
+  - action: product_form
+  - active_loop: product_form
