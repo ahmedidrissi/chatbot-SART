@@ -5,98 +5,148 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Chatbot</title> 
+  <title>Website</title> 
   
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <!-- Favicons -->
+  <link type="image/png" sizes="32x32" rel="icon" href="">
+
   <!-- Vendor CSS Files -->
-  <link href="./static/vendor/aos/aos.css" rel="stylesheet">
-  <link href="./static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="./static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="./static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="./static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="./static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="./static/css/style.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-  <main id="main">
-    <!-- ======= Chatbot Section ======= -->
-    <section class="msger">
-      <header class="msger-header">
+  <div id="chatbox">
+    <input type="checkbox" id="click" onclick="greetUser()">
+    <label id="popup" for="click">
+    <i class="fab bi-chat-dots-fill"></i>
+    <i class="fas bi-x-lg"></i>
+    </label>
+    <div class="msger">
+        <header class="msger-header">
         <div class="msger-header-title">
-          <i class="bi bi-chat-dots"></i> Chatbot
+            <i class="bi bi-chat-dots-fill"></i> Chatbot
         </div>
         <div class="msger-header-options">
-          <div class="btn-group">
+            <div class="btn-group">
             <button class="btn btn-sm dropdown-button" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-gear"></i></button>
             <ul class="dropdown-menu dropdown-menu-end">
-              <li class="dropdown-item">
+                <li class="dropdown-item">
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" onchange="changeLanguage('en-US')" name="languages" id="language1" checked>
-                  <label class="form-check-label" for="language1">English US</label>
+                    <input class="form-check-input" type="radio" onchange="changeLanguage('en-US')" name="languages" id="language1" checked>
+                    <label class="form-check-label" for="language1">English US</label>
                 </div>
-              </li>
-              <li class="dropdown-item">
+                </li>
+                <li class="dropdown-item">
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" onchange="changeLanguage('fr-FR')" name="languages" id="language2">
-                  <label class="form-check-label" for="language2">French FR</label>
+                    <input class="form-check-input" type="radio" onchange="changeLanguage('fr-FR')" name="languages" id="language2">
+                    <label class="form-check-label" for="language2">French FR</label>
                 </div>
-              </li>
+                </li>
             </ul>
-          </div>
-        </div>
-      </header>
-    
-      <main class="msger-chat">
-        <div class="msg left-msg">
-          <div class="msg-img"><img src="https://img.icons8.com/fluency/48/null/chatbot.png" alt="bot"></div>
-    
-          <div class="msg-bubble">
-            <div class="msg-info">
-              <div class="msg-info-name">SART</div>
-              <div class="msg-info-time"></div>
             </div>
-    
-            <div class="msg-text">
-              Hi, I'm SART! Go ahead and send me a message.
-            </div>
-          </div>
         </div>
-    
-        <div class="msg right-msg">
-        </div>
-      </main>
-    
-      <footer class="msger-inputarea">
+        </header>
+        <main class="msger-chat">
+        </main>
+        <footer class="msger-inputarea">
         <form id="myinput" name="myinput" class="msger-form">
         <input id="input" type="text" class="msger-input" placeholder="Enter your message...">
         <button id="send" type="submit" class="msger-send-btn"><i class="bi bi-send-fill"></i></button>   
         </form>
         <button id="mic" type="submit" class="msger-mic-btn mic-off"><i id="mic-icon" class="bi bi-mic-mute-fill"></i></button>
-      </footer>
+        </footer>
+    </div>
+  </div>
+
+  <main id="main">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="navbar">
+      <div class="container">
+        <a href="index.html" class="brand navbar-brand">Website</a> 
+        <button 
+        class="navbar-toggler" 
+        type="button" 
+        data-bs-toggle="offcanvas" 
+        data-bs-target="#offcanvasNavbar">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="width: 300px;">
+          <div class="offcanvas-header">
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="nav-menu navbar-nav ms-lg-auto ms-0">
+              <div class="clock">
+                <div class="display"></div>
+              </div>
+              <li class="nav-item" ><a href="#hero" class="nav-link scrollto active"><span>Home</span></a></li>
+              <li class="nav-item" ><a href="#about" class="nav-link scrollto"><span>About</span></a></li>
+              <li class="nav-item" ><a href="#resume" class="nav-link scrollto"><span>Resume</span></a></li>
+              <li class="nav-item" ><a href="#projects" class="nav-link scrollto"><span>Projects</span></a></li>
+              <li class="nav-item" ><a href="#contact" class="nav-link scrollto"><span>Contact</span></a></li>
+            </ul>
+          </div>
+        </div> 
+      </div>  
+    </nav>
+
+    <section class="mt-5 p-5">
+      <div class="container">
+        <h1>Hello World</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione rem culpa magnam laudantium possimus debitis autem mollitia eligendi a! Totam, nesciunt eligendi facere quasi necessitatibus reiciendis eius provident repellat nihil!</p>
+      </div>
+      <div class="container">
+        <h1>Hello World</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione rem culpa magnam laudantium possimus debitis autem mollitia eligendi a! Totam, nesciunt eligendi facere quasi necessitatibus reiciendis eius provident repellat nihil!</p>
+      </div>
+      <div class="container">
+        <h1>Hello World</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione rem culpa magnam laudantium possimus debitis autem mollitia eligendi a! Totam, nesciunt eligendi facere quasi necessitatibus reiciendis eius provident repellat nihil!</p>
+      </div>
+      <div class="container">
+        <h1>Hello World</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione rem culpa magnam laudantium possimus debitis autem mollitia eligendi a! Totam, nesciunt eligendi facere quasi necessitatibus reiciendis eius provident repellat nihil!</p>
+      </div>
+      <div class="container">
+        <h1>Hello World</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione rem culpa magnam laudantium possimus debitis autem mollitia eligendi a! Totam, nesciunt eligendi facere quasi necessitatibus reiciendis eius provident repellat nihil!</p>
+      </div>
     </section>
 
   </main><!-- End #main --> 
 
+  <footer>
+    <div class="bg-dark">
+        <h6 class="text-bg-dark p-3 m-0 text-center"><i class="bx bx-copyright"> copyright 2023</i></h6>
+    </div>
+  </footer>
+
   <!-- Vendor JS Files -->
-  <script src="./static/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="./static/vendor/aos/aos.js"></script>
-  <script src="./static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="./static/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="./static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="./static/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="./static/vendor/typed.js/typed.min.js"></script>
-  <script src="./static/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/typed.js/typed.min.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="./static/js/asr.js"></script>
-  <script src="./static/js/app.js"></script>
+  <script src="./assets/js/asr.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <script src="./assets/js/sart.js"></script>
 
 </body>
 
