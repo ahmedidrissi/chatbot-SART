@@ -2,20 +2,17 @@
 # https://rasa.com/docs/rasa/custom-actions
 
 from typing import Any, Text, Dict, List
-from rasa_sdk import Action, Tracker
-from rasa_sdk.events import SlotSet
-from rasa_sdk.executor import CollectingDispatcher
-
-from rasa_sdk import FormValidationAction
-from rasa_sdk.events import EventType
+from rasa_sdk import Action, Tracker, FormValidationAction
+from rasa_sdk.events import SlotSet, EventType
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
+
 import pandas as pd
 
 ALLOWED_PRODUCT_NAMES = ["jeans", "coats", "jackets", "shirts", "pants"]
 ALLOWED_PRODUCT_CATEGORIES = ["jeans", "coats", "jackets", "shirts", "pants"]
 ALLOWED_PRODUCT_SIZES=["small", "medium", "large", "extra-large", "extra large", "s", "m", "l", "xl"]
-ALLOWED_PRODUCT_COLOR=["red","black","blue","yello","white","purple","brown","green","kaki","pink","grey"]
+ALLOWED_PRODUCT_COLORS=["red","black","blue","yellow","white","purple","brown","green","kaki","pink","grey"]
 df = pd.read_csv("./actions/products.csv", sep='|')
 
 class ValidateProductForm(FormValidationAction):
@@ -46,8 +43,8 @@ class ValidateProductForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate `product_color` value."""
 
-        if slot_value not in ALLOWED_PRODUCT_COLOR:
-            dispatcher.utter_message(text=f"I don't recognize the color. We serve {'/'.join(ALLOWED_PRODUCT_COLOR)}.")
+        if slot_value not in ALLOWED_PRODUCT_COLORS:
+            dispatcher.utter_message(text=f"I don't recognize the color. We serve {'/'.join(ALLOWED_PRODUCT_COLORS)}.")
             return {"product_color": None}
         dispatcher.utter_message(text=f"OK! You want to have the {slot_value} color.")
         return {"product_color": slot_value}
@@ -76,7 +73,7 @@ class ValidateProductForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate `product_name` value."""
 
-        if slot_value.lower() not in ALLOWED_PRODUCT_CATEGORIES:
+        if slot_value.lower() not in ALLOWED_PRODUCT_NAMES:
             dispatcher.utter_message(text=f"We only have those products in the choosen category: {'/'.join(ALLOWED_PRODUCT_NAMES)}.")
             return {"product_name": None}
         dispatcher.utter_message(text=f"OK! You choosed {slot_value}.")
