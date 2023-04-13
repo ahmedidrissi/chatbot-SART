@@ -4,12 +4,14 @@ intents:
   - greet
   - greet_with_name
   - thanks
-  - who_are_you
   - help
+  - bot_challenge
+  - affirm
+  - deny
+  - stop
   - goodbye
-  - request_product_form
-  - order_stock
-  - confirm_order
+  - buy_product
+  - inform
   - cancel_order
   - show_report
   
@@ -96,7 +98,7 @@ responses:
   utter_help:
     - text: "Of course! What do you need help with?"
     - text : "I'm here to assist you. What do you need help with?"  
-  utter_name:
+  utter_bot_challenge:
     - text : "I'm Chatbot S.A.R.T, your personal Style Assistant and Retail Technology."
     - text : "I'm a Chatbot.My name is S.A.R.T, which stands for Style Assistant and Retail Technology."
     - text : "I'm a Chatbot. Call me S.A.R.T, which is short for Style Assistant and Retail Technology." 
@@ -105,21 +107,26 @@ responses:
     - text: "Bye! Take care!"
     - text: "Goodbye! Have a great day!"
     - text: "See you later!"
-  utter_default:
-    - text: "Sorry, I didn't understand. Can you please rephrase?"
-    - text: "I'm not sure what you're asking. Could you please clarify?"
-    - text: "I'm not sure I understood your query correctly. Can you please repeat it?"
-    - text: "I'm having difficulty processing your query. Can you please try asking it in a simpler way?"
+  utter_submit:
+    - text: I will now order this product for you!
+  utter_product_slots:
+  - text: I will order {product_quantity} {product_name}.
+  utter_ask_continue:
+  - text: Are you sure you want to stop the form?
+  utter_ask_product_category:
+    - text: "what category are you looking for ?"
+  utter_ask_product_color:
+    - text: "what color would you like ?"
+  utter_ask_product_size:
+    - text: "What size would you like ?"
+  utter_ask_product_name:
+    - text: "what product do you want ?"
+  utter_ask_product_quantity:
+    - text: "How much of {product_name} you want?"
   utter_cancel_order:
     - text: "The order for {product_name} has been cancelled successfully."
   utter_show_report:
     - text: "The report is being generated. Please wait for a moment." 
-  utter_confirm_order:
-    - text: "Would you like to confirm your order for the {product_name} ?"
-    - text: "Can I confirm your order for the {product_name} ?"
-    - text: "Do you want to proceed with your order for the {product_name}?"
-    - text: "Shall I place an order for the {product_name} ?"
-    - text: "Are you ready to confirm your order for the {product_name} ?" 
 
 actions:
   - validate_product_form
