@@ -4,10 +4,12 @@ const msgerChat = get(".msger-chat");
 
 // Chatbot icons by Icons8 from https://icons8.com/icon/79UfeEN6JkZ8/chatbot
 // User icon by Icons8 from https://icons8.com/icon/kDoeg22e5jUY/male-user
-const BOT_IMG = "https://img.icons8.com/fluency/48/null/chatbot.png";
-const PERSON_IMG = "https://img.icons8.com/fluency/48/null/user-male-circle.png";
+const BOT_IMG = "https:// img.icons8.com/fluency/48/null/chatbot.png";
+const PERSON_IMG = "https:// img.icons8.com/fluency/48/null/user-male-circle.png";
 const BOT_NAME = "SART";
 const PERSON_NAME = "User";
+
+var greet = false;
 
 window.addEventListener('load', function() {
   document.querySelector('.msg-info-time').textContent = formatDate(new Date());
@@ -41,13 +43,20 @@ msgerForm.addEventListener('submit', event => {
   .catch(error => console.error(error));
 });
 
+function greetUser() {
+  if (!greet) {
+    const msg = "Hi, I'm SART! Go ahead and send me a message.";
+    setTimeout(() => {
+      appendMessage(BOT_NAME, BOT_IMG, "left", msg);
+    }, 1000);
+    greet = true;
+  }
+}
 
 function appendMessage(name, img, side, text) {
   //   Simple solution for small apps
   const msgHTML = `
     <div class="msg ${side}-msg">
-      <div class="msg-img"><img src="${img}" alt="bot"></div>
-
       <div class="msg-bubble">
         <div class="msg-info">
           <div class="msg-info-name">${name}</div>

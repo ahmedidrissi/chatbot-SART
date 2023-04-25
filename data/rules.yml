@@ -2,92 +2,14 @@ version: "3.1"
 
 rules:
 
+#rule to say hello when the user say hello
 - rule: Say hello anytime the user says hello
   steps:
   - intent: greet
   - action: utter_greet
 
-- rule: Say goodbye anytime the user says goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
-
-# rule to handle product stock check
-- rule: check_stock
-  steps:
-  - intent: check_stock
-  - action: action_check_stock
-
-
-# rule to handle cancel order
-- rule: cancel_order
-  steps:
-  - intent: cancel_order
-  - action: utter_cancel_order
-
-# rule to handle showing inventory report
-- rule: show_report
-  steps:
-  - intent: show_report
-  - action: utter_show_report
-
-# rule to handle searching for products by brand
-- rule: search_product_by_brand
-  steps:
-  - intent: search_product_by_brand
-  - action: utter_search_product_by_brand
-
-# rule to handle searching for products by material
-- rule: search_product_by_material
-  steps:
-  - intent: search_product_by_material
-  - action: utter_search_product_by_material
-
-# rule to handle searching for products by category
-- rule: search_product_by_category
-  steps:
-  - intent: search_product_by_category
-  - action: utter_search_product_by_category
-
-# rule to handle searching for products by color
-- rule: search_product_by_color
-  steps:
-  - intent: search_product_by_color
-  - action: utter_search_product_by_color
-
-# rule to handle searching for products by size
-- rule: search_product_by_size
-  steps:
-  - intent: search_product_by_size
-  - action: utter_search_product_by_size
-
-
-# rule to confirm the order
-- rule: order_stock
-  steps:
-  - intent: confirm_order
-  - action: utter_order_stock  
-
-#rule to activate the form of the product
-- rule:  Activate Product Form
-  steps:
-  - intent: order_stock
-  - action: product_form
-  - active_loop: product_form
-
-#rule to submits form when the required intents are validated
-- rule: Submit Product Form
-  condition:
-  - active_loop: product_form
-  steps:
-  - action: product_form
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
-  - action: utter_confirm_order
-
 #rule to say hello with saying the name of the user if he gived his name
-- rule: Say hello anytime the user says hello
+- rule: Say hello and user name anytime the user says hello and his name
   steps:
   - intent: greet_with_name
   - action: utter_greet_with_name
@@ -107,10 +29,54 @@ rules:
 #rule to say you are a chatbot and a name if asked
 - rule: say name when asked
   steps:
-  - intent: who_are_you
-  - action: utter_name
+  - intent: bot_challenge
+  - action: utter_bot_challenge
 
+#rule to say goodbye when the user say goodbye
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
 
+# rule to handle cancel order
+- rule: cancel_order
+  steps:
+  - intent: cancel_order
+  - action: utter_cancel_order
 
+# rule to handle showing inventory report
+- rule: show_report
+  steps:
+  - intent: show_report
+  - action: utter_show_report
 
+#rule to activate the form of the product
+- rule:  Activate Product Form
+  steps:
+  - intent: buy_product
+  - action: product_form
+  - active_loop: product_form
 
+#rule to submits form when the required intents are validated
+- rule: Submit Product Form
+  condition:
+  - active_loop: product_form
+  steps:
+  - action: product_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_submit_product_form
+  - action: action_reset_product_form
+
+- rule: Interruption in product Form
+  condition:
+  # Condition that form is active.
+  - active_loop: product_form
+  steps:
+  # This unhappy path handles the case of an intent `bot_challenge`.
+  - intent: bot_challenge
+  - action: utter_bot_challenge
+  # Return to form after handling the `bot_challenge` intent
+  - action: product_form
+  - active_loop: product_form
