@@ -1,7 +1,5 @@
 version: "3.1"
-
 nlu:
-
 - intent: greet
   examples: |
     - hi
@@ -19,15 +17,13 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
 - intent: greet_with_name
-  examples: | 
+  examples: |
     - hey there i am [Samira Alaoui](user_name)
-    - hi my name is [Omar Ibn Sina](user_name)  
+    - hi my name is [Omar Ibn Sina](user_name)
     - hello i'm [Ahmed Idrissi](user_name)
     - hey there my name is [Mustapha Khalid](user_name)
     - hi i'm [Salim](user_name)
-  
 - intent: thanks
   examples: |
     - Thank you
@@ -35,14 +31,13 @@ nlu:
     - Thanks
     - Thanks for the help
     - ty
-
+    - thank you
 - intent: help
   examples: |
     - Can you help me?
     - I need help
-    - Assist me please 
+    - Assist me please
     - Help
-
 - intent: bot_challenge
   examples: |
     - Who are you?
@@ -50,7 +45,6 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
 - intent: affirm
   examples: |
     - yes
@@ -60,7 +54,6 @@ nlu:
     - that sounds good
     - correct
     - affirm
-
 - intent: deny
   examples: |
     - no
@@ -70,7 +63,6 @@ nlu:
     - don't like that
     - no way
     - not really
-
 - intent: stop
   examples: |
     - stop
@@ -78,7 +70,6 @@ nlu:
     - please stop
     - i want to stop
     - stop the form
-
 - intent: goodbye
   examples: |
     - cu
@@ -105,23 +96,51 @@ nlu:
     - Do you have any [jackets](product_category) in stock?
     - How many [dresses](product_category) do you have available?
 
-- intent: inform
+- intent: inform_product_category
   examples: |
-    - I want the [Blue Jean](product_name)
-    - I'm interested in the [Edgy and stylish ripped skinny jeans](product_name)
-    - [Sophisticated and comfortable wide-leg pants](product_name)
     - I'm interested in [shirt](product_category)
     - I want [shoes](product_category)
-    - I'm interested in [Zara](product_brand) products
-    - [L](product_size) size
-    - give me the [L](product_size) size
-    - [XL](product_size)
+    - [jeans](product_category)
+    - [coats](product_category) category please
+
+- intent: inform_product_color
+  examples: |
     - [red](product_color)
     - [blue](product_color) color
-    - i want [blue](product_color) color
+    - i want [green](product_color) color
+    - [yellow](product_color)
+
+- intent: inform_product_size
+  examples: |
+    - [L](product_size) size
+    - give me the [s](product_size) size
+    - [XL](product_size)
+    - [xl](product_size)
+
+- intent: inform_product_name
+  examples: |
+    - I want the [blue jean](product_name)
+    - I'm interested in the [edgy and stylish ripped skinny jeans](product_name)
+    - [sophisticated and comfortable wide-leg pants](product_name)
+    - [faux leather jacket](product_name) please
+    - [denim jacket](product_name)
+    - [edgy skinny jeans](product_name)
+    - [modern shoes](product_name)
+    - [denim jacket](product_name) please
+    - [ripped skinny jeans](product_name)
+
+- intent: inform_product_brand
+  examples: |
+    - brand : [zara](product_brand)
+    - I'm interested in [H&M](product_brand) products
+    - [Nike](product_brand)
+
+- intent: inform_product_quantity
+  examples: |
     - [20](product_quantity)
     - give me [5](product_quantity)
     - I want [10](product_quantity) please
+    - [3](product_quantity)
 
 - intent: cancel_order
   examples: |
