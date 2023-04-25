@@ -1,5 +1,4 @@
 .rasa
 __pycache__
-rasa.db
 results
 models
