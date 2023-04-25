@@ -66,10 +66,10 @@ rules:
   - active_loop: null
   - slot_was_set:
     - requested_slot: null
-  - action: utter_submit
-  - action: utter_product_slots
+  - action: action_submit_product_form
+  - action: action_reset_product_form
 
-- rule: Interruption in Pizza Form
+- rule: Interruption in product Form
   condition:
   # Condition that form is active.
   - active_loop: product_form
