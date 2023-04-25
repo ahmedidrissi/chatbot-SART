@@ -1,30 +1,32 @@
-version: "3.1"
-
+version: '3.1'
 intents:
-  - greet
-  - greet_with_name
-  - thanks
-  - help
-  - bot_challenge
-  - affirm
-  - deny
-  - stop
-  - goodbye
-  - buy_product
-  - inform
-  - cancel_order
-  - show_report
-  
+- affirm
+- bot_challenge
+- buy_product
+- cancel_order
+- deny
+- goodbye
+- greet
+- greet_with_name
+- help
+- inform_product_brand
+- inform_product_category
+- inform_product_color
+- inform_product_name
+- inform_product_quantity
+- inform_product_size
+- show_report
+- stop
+- thanks
 entities:
-  - user_name
-  - product_name
-  - product_category
-  - product_material
-  - product_brand
-  - product_color
-  - product_size
-  - product_quantity
-
+- product_size
+- product_category
+- product_color
+- product_name
+- product_quantity
+- user_name
+- product_material
+- product_brand
 slots:
   user_name:
     type: text
@@ -38,12 +40,18 @@ slots:
     mappings:
     - type: from_entity
       entity: product_name
+      conditions:
+      - active_loop: product_form
+        requested_slot: product_name
   product_category:
     type: text
     influence_conversation: true
     mappings:
     - type: from_entity
       entity: product_category
+      conditions:
+      - active_loop: product_form
+        requested_slot: product_category
   product_material:
     type: text
     influence_conversation: true
@@ -62,75 +70,81 @@ slots:
     mappings:
     - type: from_entity
       entity: product_color
+      conditions:
+      - active_loop: product_form
+        requested_slot: product_color
   product_size:
     type: text
     influence_conversation: true
     mappings:
     - type: from_entity
       entity: product_size
+      conditions:
+      - active_loop: product_form
+        requested_slot: product_size
   product_quantity:
     type: text
     influence_conversation: true
     mappings:
     - type: from_entity
       entity: product_quantity
-
+      conditions:
+      - active_loop: product_form
+        requested_slot: product_quantity
 forms:
   product_form:
-   required_slots:
+    required_slots:
     - product_category
     - product_color
     - product_size
     - product_name
     - product_quantity
-
 responses:
   utter_greet:
-    - text: "Hi there! Is there anything I can help you with?"
-    - text: "Hey! How may I assist you with your clothing needs?"
+  - text: Hi there! Is there anything I can help you with?
+  - text: Hey! How may I assist you with your clothing needs?
   utter_greet_with_name:
-    - text: "Hello {user_name}! Welcome to our clothing store. How can I assist you today?"
-    - text: "Hello {user_name}! How can I help you find the perfect outfit today?"
-    - text: "Good day {user_name}! What can I help you find today?"
+  - text: Hello {user_name}! Welcome to our clothing store. How can I assist you today?
+  - text: Hello {user_name}! How can I help you find the perfect outfit today?
+  - text: Good day {user_name}! What can I help you find today?
   utter_welcome:
-    - text: "No problem, happy to help!"
-    - text:  "I'm glad I could assist you!"
+  - text: No problem, happy to help!
+  - text: I'm glad I could assist you!
   utter_help:
-    - text: "Of course! What do you need help with?"
-    - text : "I'm here to assist you. What do you need help with?"  
+  - text: Of course! What do you need help with?
+  - text: I'm here to assist you. What do you need help with?
   utter_bot_challenge:
-    - text : "I'm Chatbot S.A.R.T, your personal Style Assistant and Retail Technology."
-    - text : "I'm a Chatbot.My name is S.A.R.T, which stands for Style Assistant and Retail Technology."
-    - text : "I'm a Chatbot. Call me S.A.R.T, which is short for Style Assistant and Retail Technology." 
+  - text: I'm Chatbot S.A.R.T, your personal Style Assistant and Retail Technology.
+  - text: I'm a Chatbot.My name is S.A.R.T, which stands for Style Assistant and Retail Technology.
+  - text: I'm a Chatbot. Call me S.A.R.T, which is short for Style Assistant and Retail Technology.
   utter_goodbye:
-    - text: "Goodbye! Have a nice day."
-    - text: "Bye! Take care!"
-    - text: "Goodbye! Have a great day!"
-    - text: "See you later!"
-  utter_submit:
-    - text: I will now order this product for you!
-  utter_product_slots:
-  - text: I will order {product_quantity} {product_name}.
+  - text: Goodbye! Have a nice day.
+  - text: Bye! Take care!
+  - text: Goodbye! Have a great day!
+  - text: See you later!
   utter_ask_continue:
   - text: Are you sure you want to stop the form?
   utter_ask_product_category:
-    - text: "what category are you looking for ?"
+  - text: what category are you looking for ?
   utter_ask_product_color:
-    - text: "what color would you like ?"
+  - text: what color would you like ?
   utter_ask_product_size:
-    - text: "What size would you like ?"
+  - text: What size would you like ?
   utter_ask_product_name:
-    - text: "what product do you want ?"
+  - text: what product do you want ?
   utter_ask_product_quantity:
-    - text: "How much of {product_name} you want?"
+  - text: How much of {product_name} you want?
   utter_cancel_order:
-    - text: "The order for {product_name} has been cancelled successfully."
+  - text: The order for {product_name} has been cancelled successfully.
   utter_show_report:
-    - text: "The report is being generated. Please wait for a moment." 
-
+  - text: The report is being generated. Please wait for a moment.
 actions:
-  - validate_product_form
-
+- utter_goodbye
+- utter_greet
+- utter_welcome
+- action_submit_product_form
+- action_reset_product_form
+- validate_product_form
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
