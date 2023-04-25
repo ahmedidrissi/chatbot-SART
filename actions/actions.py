@@ -9,11 +9,11 @@ from rasa_sdk.types import DomainDict
 
 import pandas as pd
 
-ALLOWED_PRODUCT_NAMES = ["jeans", "coats", "jackets", "shirts", "pants"]
-ALLOWED_PRODUCT_CATEGORIES = ["jeans", "coats", "jackets", "shirts", "pants"]
-ALLOWED_PRODUCT_SIZES=["small", "medium", "large", "extra-large", "extra large", "s", "m", "l", "xl"]
-ALLOWED_PRODUCT_COLORS=["red","black","blue","yellow","white","purple","brown","green","kaki","pink","grey"]
 df = pd.read_csv("./actions/products.csv", sep='|')
+ALLOWED_PRODUCT_CATEGORIES = list(df['category'].unique())
+ALLOWED_PRODUCT_SIZES = ["s", "m", "l", "xl"]
+ALLOWED_PRODUCT_COLORS = ["red","black","blue","yellow","white","purple","brown","green","kaki","pink","grey"]
+ALLOWED_PRODUCT_NAMES = []
 
 class ValidateProductForm(FormValidationAction):
     def name(self) -> Text:
@@ -29,9 +29,9 @@ class ValidateProductForm(FormValidationAction):
         """Validate `product_category` value."""
 
         if slot_value.lower() not in ALLOWED_PRODUCT_CATEGORIES:
-            dispatcher.utter_message(text=f"We only accept those categories: {'/'.join(ALLOWED_PRODUCT_CATEGORIES)}.")
+            dispatcher.utter_message(text=f"We only accept those categories: {', '.join(ALLOWED_PRODUCT_CATEGORIES)}.")
             return {"product_category": None}
-        dispatcher.utter_message(text=f"OK! You choosed {slot_value}.")
+        dispatcher.utter_message(text=f"We have {slot_value}.")
         return {"product_category": slot_value}
 
     def validate_product_color(
@@ -43,10 +43,12 @@ class ValidateProductForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate `product_color` value."""
 
+        #TODO: get available colors for the chosen category
+
         if slot_value not in ALLOWED_PRODUCT_COLORS:
-            dispatcher.utter_message(text=f"I don't recognize the color. We serve {'/'.join(ALLOWED_PRODUCT_COLORS)}.")
+            dispatcher.utter_message(text=f"I don't recognize the color. We serve {', '.join(ALLOWED_PRODUCT_COLORS)}.")
             return {"product_color": None}
-        dispatcher.utter_message(text=f"OK! You want to have the {slot_value} color.")
+        dispatcher.utter_message(text=f"You want to have the {slot_value} color.")
         return {"product_color": slot_value}
     
     def validate_product_size(
@@ -58,10 +60,12 @@ class ValidateProductForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate `product_size` value."""
 
+        #TODO: get available sizes for the chosen category
+
         if slot_value.lower() not in ALLOWED_PRODUCT_SIZES:
-            dispatcher.utter_message(text=f"We only accept product sizes: {'/'.join(ALLOWED_PRODUCT_SIZES)}.")
+            dispatcher.utter_message(text=f"We only accept product sizes: {', '.join(ALLOWED_PRODUCT_SIZES)}.")
             return {"product_size": None}
-        dispatcher.utter_message(text=f"OK! You want to have the {slot_value} size.")
+        dispatcher.utter_message(text=f"You want to have the {slot_value} size.")
         return {"product_size": slot_value}
         
     def validate_product_name(
@@ -73,10 +77,15 @@ class ValidateProductForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate `product_name` value."""
 
+        category = tracker.get_slot("product_category")
+        data = df[df['category'] == category]
+        names = data['name']
+        ALLOWED_PRODUCT_NAMES = list(map(str.lower, names))
+
         if slot_value.lower() not in ALLOWED_PRODUCT_NAMES:
-            dispatcher.utter_message(text=f"We only have those products in the choosen category: {'/'.join(ALLOWED_PRODUCT_NAMES)}.")
+            dispatcher.utter_message(text=f"We only have those products in the chosen category: {', '.join(ALLOWED_PRODUCT_NAMES)}.")
             return {"product_name": None}
-        dispatcher.utter_message(text=f"OK! You choosed {slot_value}.")
+        dispatcher.utter_message(text=f"You choosed {slot_value}.")
         return {"product_name": slot_value}
 
     def validate_product_quantity(
@@ -95,3 +104,33 @@ class ValidateProductForm(FormValidationAction):
         dispatcher.utter_message(text=f"OK! You want to have {slot_value} from this product.")
         return {"product_quantity": slot_value}
     
+class SubmitProductForm(Action):
+    def name(slef):
+        return "action_submit_product_form"
+
+    def run(self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(text="Your order has been successfully placed.")
+        return []
+
+class ResetProductForm(Action):
+    def name(slef):
+        return "action_reset_product_form"
+
+    def run(self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> List[Dict[Text, Any]]:
+        """Reset `product form` values."""
+
+        return [
+        {"product_category": None},
+        {"product_color": None},
+        {"product_size": None},
+        {"product_name": None},
+        {"product_quantity": None}]
