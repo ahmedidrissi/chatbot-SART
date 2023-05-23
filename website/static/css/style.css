@@ -303,11 +303,18 @@ h6 {
 /*--------------------------------------------------------------
 # general section
 --------------------------------------------------------------*/
+section{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
 section h2{
   color: #7d30f8;
   font-weight: 600;
 }
-
 section p{
   font-size: 20px;
 }
@@ -316,18 +323,14 @@ section p{
 --------------------------------------------------------------*/
 #home{
   height: 100vh;
-  width: 100%;
 }
-
 #home .container{
   height: 100%;
-  width: 80%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 50px;
 }
-
 #home h1{
   font-size: 60px;
   font-weight: bold;
@@ -343,14 +346,34 @@ section p{
   border-radius: 1rem;
   padding: 5px 20px;
 }
+#home .illustration{
+  height: 500px;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 992px) {
+  #home .description{
+    text-align: center;
+  }
+  #home h1{
+    font-size: 40px;
+  }
+  #home p{
+    font-size: 18px;
+  }
+  #home .get-started button{
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  #home .illustration{
+    height: 300px;
+  }
+}
 
 /*--------------------------------------------------------------
 # about section
 --------------------------------------------------------------*/
-#about{
-  width: 100%;
-  height: 70vh;
-}
 #about .container{
   width: 100%;
   height: 100%;
@@ -363,4 +386,10 @@ section p{
 }
 #about .feature-item h3{
   color: #7622fc;
+}
+
+@media (max-width: 992px) {
+  #about .feature-item{
+    margin-top: 20px;
+  }
 }
