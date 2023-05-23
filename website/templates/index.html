@@ -5,13 +5,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Website</title> 
+  <title>SART Chatbot Demo</title> 
   
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link type="image/png" sizes="32x32" rel="icon" href="">
 
   <!-- Vendor CSS Files -->
   <link href="./static/vendor/aos/aos.css" rel="stylesheet">
@@ -37,7 +36,7 @@
     <div class="msger">
         <header class="msger-header">
         <div class="msger-header-title">
-            <i class="bi bi-chat-dots-fill"></i> Chatbot
+            <i class="bi bi-chat-dots-fill"></i> SART
         </div>
         <div class="msger-header-options">
             <div class="btn-group">
@@ -62,66 +61,96 @@
         <main class="msger-chat">
         </main>
         <footer class="msger-inputarea">
-        <form id="myinput" name="myinput" class="msger-form">
-        <input id="input" type="text" class="msger-input" placeholder="Enter your message...">
-        <button id="send" type="submit" class="msger-send-btn"><i class="bi bi-send-fill"></i></button>   
-        </form>
-        <button id="mic" type="submit" class="msger-mic-btn mic-off"><i id="mic-icon" class="bi bi-mic-mute-fill"></i></button>
+          <form id="myinput" name="myinput" class="msger-form">
+            <input id="input" type="text" class="msger-input" placeholder="Enter your message...">
+            <button id="send" type="submit" class="msger-send-btn"><i class="bi bi-send-fill"></i></button>   
+          </form>
+          <button id="mic" type="submit" class="msger-mic-btn mic-off"><i id="mic-icon" class="bi bi-mic-mute-fill"></i></button>
         </footer>
     </div>
   </div>
 
-  <main id="main">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="navbar">
-      <div class="container">
-        <a href="index.html" class="brand navbar-brand">Website</a> 
-        <button 
-        class="navbar-toggler" 
-        type="button" 
-        data-bs-toggle="offcanvas" 
-        data-bs-target="#offcanvasNavbar">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="width: 300px;">
-          <div class="offcanvas-header">
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <div class="offcanvas-body">
-            <ul class="nav-menu navbar-nav ms-lg-auto ms-0">
-              <div class="clock">
-                <div class="display"></div>
-              </div>
-              <li class="nav-item" ><a href="#hero" class="nav-link scrollto active"><span>Home</span></a></li>
-              <li class="nav-item" ><a href="#about" class="nav-link scrollto"><span>About</span></a></li>
-              <li class="nav-item" ><a href="#resume" class="nav-link scrollto"><span>Resume</span></a></li>
-              <li class="nav-item" ><a href="#projects" class="nav-link scrollto"><span>Projects</span></a></li>
-              <li class="nav-item" ><a href="#contact" class="nav-link scrollto"><span>Contact</span></a></li>
-            </ul>
-          </div>
-        </div> 
-      </div>  
-    </nav>
+  <nav class="navbar navbar-expand-lg fixed-top" id="navbar">
+    <div class="container">
+      <a href="index.html" class="brand navbar-brand"><i class="bi bi-chat-dots-fill"></i>Chatbot SART</a> 
+      <button 
+      class="navbar-toggler" 
+      type="button" 
+      data-bs-toggle="offcanvas" 
+      data-bs-target="#offcanvasNavbar">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="width: 300px;">
+        <div class="offcanvas-header">
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="nav-menu navbar-nav ms-lg-auto ms-0">
+            <li class="nav-item" ><a href="#home" class="nav-link scrollto active"><span>Home</span></a></li>
+            <li class="nav-item" ><a href="#about" class="nav-link scrollto"><span>About</span></a></li>
+            <li class="nav-item" ><a href="#contact" class="nav-link scrollto"><span>Contact</span></a></li>
+            <li class="nav-item" ><button class="trial-btn">Free Trial</button></li>
+          </ul>
+        </div>
+      </div> 
+    </div>  
+  </nav>
 
-    <section class="mt-5 p-5">
+  <main id="main">
+    
+    <section id="home">
+      <!--<a href="https://storyset.com/online">Online illustrations by Storyset</a>-->
       <div class="container">
-        <h1>Hello World</h1>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione rem culpa magnam laudantium possimus debitis autem mollitia eligendi a! Totam, nesciunt eligendi facere quasi necessitatibus reiciendis eius provident repellat nihil!</p>
+        
+        <div class="description">
+          <h1>Stock Management Chatbot</h1>
+          <p>A smart solution for managing your stock efficiently and effectively.</p>
+          <p>Experience the power of our Stock Management Chatbot today.</p>
+          <div class="get-started">
+            <button class="get-started-btn">Get Started Now!</button>
+          </div>
+        </div>
+
+        <div class="preview">
+          <img src="/static/img/chatbot.svg" alt="chatbot" height="500px">
+        </div>
       </div>
+      
+    </section>
+
+    <section id="about">
       <div class="container">
-        <h1>Hello World</h1>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione rem culpa magnam laudantium possimus debitis autem mollitia eligendi a! Totam, nesciunt eligendi facere quasi necessitatibus reiciendis eius provident repellat nihil!</p>
-      </div>
-      <div class="container">
-        <h1>Hello World</h1>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione rem culpa magnam laudantium possimus debitis autem mollitia eligendi a! Totam, nesciunt eligendi facere quasi necessitatibus reiciendis eius provident repellat nihil!</p>
-      </div>
-      <div class="container">
-        <h1>Hello World</h1>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione rem culpa magnam laudantium possimus debitis autem mollitia eligendi a! Totam, nesciunt eligendi facere quasi necessitatibus reiciendis eius provident repellat nihil!</p>
-      </div>
-      <div class="container">
-        <h1>Hello World</h1>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ratione rem culpa magnam laudantium possimus debitis autem mollitia eligendi a! Totam, nesciunt eligendi facere quasi necessitatibus reiciendis eius provident repellat nihil!</p>
+        <div class="description">
+          <h2>About SART Chatbot</h2>
+          <p>SART Chatbot is an intelligent stock management solution designed to streamline your inventory processes. Our chatbot leverages the power of natural language processing and artificial intelligence to provide a seamless and user-friendly experience.</p>
+          <p>With SART Chatbot, you can easily monitor stock levels, track inventory, and automate various stock management tasks. Whether you're a small business or a large enterprise, our chatbot offers the flexibility and efficiency you need to optimize your stock management operations.</p>
+        </div>
+        <div class="features">
+          <h2>Key features of SART Chatbot</h2>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="feature-item">
+                <i class="bi bi-info-circle"></i>
+                <h3>Real-time Stock Information</h3>
+                <p>Get instant updates on stock levels, availability, and locations.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="feature-item">
+                <i class="bi bi-command"></i>
+                <h3>Automated Processes</h3>
+                <p>Automate stock management tasks such as restocking, ordering, and inventory tracking.</p>
+              </div> 
+            </div>
+            <div class="col-md-4">
+              <div class="feature-item">
+                <i class="bi bi-chat-left-text"></i>
+                <h3>Interactive Chat Interface</h3>
+                <p>Engage in natural language conversations to easily interact with the chatbot.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
