@@ -378,6 +378,44 @@ section p{
   width: 100%;
   height: 100%;
 }
+#about h2{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#about .description p{
+  text-align: center;
+  background-color: #fff;
+  padding: 15px 25px;
+  border-radius: 1rem;
+}
+svg#freepik_stories-chat-bot{
+  width: 400px;
+}
+svg#freepik_stories-chat-bot:not(.animated) .animable {
+  opacity: 0;
+}
+svg#freepik_stories-chat-bot.animated #freepik--speech-bubble--inject-2 {
+  animation: 3s Infinite  linear floating;
+  animation-delay: 0s;
+}
+svg#freepik_stories-chat-bot.animated #freepik--Character--inject-2 {
+  animation: 3s Infinite  linear floating;
+  animation-delay: 0s;}            
+  @keyframes floating {                
+    0% {                    
+      opacity: 1;                    
+      transform: translateY(0px);                
+    }               
+    50% {                    
+      transform: translateY(-10px);                
+    }                
+    100% {                    
+      opacity: 1;                    
+      transform: translateY(0px);                
+    }              
+}        
+.animator-hidden { display: none; }
+
 #about .feature-item{
   background-color: #fff;
   border-radius: 1rem;
@@ -390,6 +428,6 @@ section p{
 
 @media (max-width: 992px) {
   #about .feature-item{
-    margin-top: 20px;
+    margin-bottom: 20px;
   }
 }
