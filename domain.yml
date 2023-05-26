@@ -1,7 +1,9 @@
 version: '3.1'
+
 intents:
 - affirm
 - bot_challenge
+- bot_age
 - buy_product
 - cancel_order
 - deny
@@ -18,6 +20,7 @@ intents:
 - show_report
 - stop
 - thanks
+
 entities:
 - product_size
 - product_category
@@ -27,6 +30,7 @@ entities:
 - user_name
 - product_material
 - product_brand
+
 slots:
   user_name:
     type: text
@@ -91,6 +95,7 @@ slots:
       conditions:
       - active_loop: product_form
         requested_slot: product_quantity
+
 forms:
   product_form:
     required_slots:
@@ -99,6 +104,7 @@ forms:
     - product_size
     - product_name
     - product_quantity
+
 responses:
   utter_greet:
   - text: Hi there! Is there anything I can help you with?
@@ -117,6 +123,8 @@ responses:
   - text: I'm Chatbot S.A.R.T, your personal Style Assistant and Retail Technology.
   - text: I'm a Chatbot.My name is S.A.R.T, which stands for Style Assistant and Retail Technology.
   - text: I'm a Chatbot. Call me S.A.R.T, which is short for Style Assistant and Retail Technology.
+  utter_bot_age:
+  - text: Same as yours
   utter_goodbye:
   - text: Goodbye! Have a nice day.
   - text: Bye! Take care!
@@ -138,13 +146,12 @@ responses:
   - text: The order for {product_name} has been cancelled successfully.
   utter_show_report:
   - text: The report is being generated. Please wait for a moment.
+
 actions:
-- utter_goodbye
-- utter_greet
-- utter_welcome
 - action_submit_product_form
 - action_reset_product_form
 - validate_product_form
+
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
