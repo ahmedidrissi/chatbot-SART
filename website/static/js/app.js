@@ -33,11 +33,13 @@ msgerForm.addEventListener('submit', event => {
   })
   .then(response => response.json())
   .then(data => {
-    const botResp = data[0]['text'];
-    //const delay = botResp.split(" ").length * 100;
-
-    appendMessage(BOT_NAME, BOT_IMG, "left", botResp);
-    
+    const promises = data.map(item => item.text);
+    return Promise.all(promises);
+  })
+  .then(botResponses => {
+    botResponses.forEach(botResp => {
+      appendMessage(BOT_NAME, BOT_IMG, "left", botResp);
+    });
   })
   .catch(error => {
     console.error(error);
