@@ -3,7 +3,7 @@
 
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker, FormValidationAction
-from rasa_sdk.events import SlotSet, EventType
+from rasa_sdk.events import SlotSet, EventType, AllSlotsReset
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 
@@ -62,10 +62,15 @@ class ValidateProductForm(FormValidationAction):
 
         #TODO: get available sizes for the chosen category
 
+        category = tracker.get_slot("product_category")
+        data = df[df['category'] == category]
+        names = data['name']
+        ALLOWED_PRODUCT_NAMES = list(map(str.lower, names))
+
         if slot_value.lower() not in ALLOWED_PRODUCT_SIZES:
             dispatcher.utter_message(text=f"We only accept product sizes: {', '.join(ALLOWED_PRODUCT_SIZES)}.")
             return {"product_size": None}
-        dispatcher.utter_message(text=f"You want to have the {slot_value} size.")
+        dispatcher.utter_message(text=f"You want to have the {slot_value} size.\nWe have those products in the chosen category: {', '.join(ALLOWED_PRODUCT_NAMES)}.")
         return {"product_size": slot_value}
         
     def validate_product_name(
@@ -127,12 +132,8 @@ class ResetProductForm(Action):
         dispatcher: CollectingDispatcher,
         tracker: Tracker,
         domain: DomainDict,
-    ) -> List[Dict[Text, Any]]:
+    ):
         """Reset `product form` values."""
 
-        return [
-        {"product_category": None},
-        {"product_color": None},
-        {"product_size": None},
-        {"product_name": None},
-        {"product_quantity": None}]
+        slots = ["product_category", "product_color", "product_size", "product_name", "product_quantity"]
+        return [SlotSet(slot, None) for slot in slots]
