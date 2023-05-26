@@ -60,3 +60,83 @@ stories:
     - action: action_reset_product_form
     - intent: goodbye
     - action: utter_goodbye
+    
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: bot_challenge
+  - action: utter_bot_challenge
+  - intent: help
+  - action: utter_help
+  - intent: buy_product
+  - action: product_form
+  - active_loop: product_form
+  - slot_was_set:
+    - requested_slot: product_category
+  - intent: inform_product_category
+    entities:
+    - product_category: jeans
+  - slot_was_set:
+    - product_category: jeans
+  - action: product_form
+  - slot_was_set:
+    - product_category: jeans
+  - slot_was_set:
+    - requested_slot: product_color
+  - intent: inform_product_color
+    entities:
+    - product_color: blue
+  - slot_was_set:
+    - product_color: blue
+  - action: product_form
+  - slot_was_set:
+    - product_color: blue
+  - slot_was_set:
+    - requested_slot: product_size
+  - intent: inform_product_size
+    entities:
+    - product_size: xl
+  - slot_was_set:
+    - product_size: xl
+  - action: product_form
+  - slot_was_set:
+    - product_size: xl
+  - slot_was_set:
+    - requested_slot: product_name
+  - intent: inform_product_name
+    entities:
+    - product_name: edgy skinny jeans
+  - slot_was_set:
+    - product_name: edgy skinny jeans
+  - action: product_form
+  - slot_was_set:
+    - product_name: null
+  - slot_was_set:
+    - requested_slot: product_name
+  - intent: inform_product_name
+    entities:
+    - product_name: ripped skinny jeans
+  - slot_was_set:
+    - product_name: ripped skinny jeans
+  - action: product_form
+  - slot_was_set:
+    - product_name: ripped skinny jeans
+  - slot_was_set:
+    - requested_slot: product_quantity
+  - intent: inform_product_quantity
+    entities:
+    - product_quantity: '3'
+  - slot_was_set:
+    - product_quantity: '3'
+  - action: product_form
+  - slot_was_set:
+    - product_quantity: '3'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_submit_product_form
+  - action: action_reset_product_form
+  - intent: goodbye
+  - action: utter_goodbye
+  - intent: stop

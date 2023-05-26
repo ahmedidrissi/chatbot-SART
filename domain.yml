@@ -1,9 +1,8 @@
 version: '3.1'
-
 intents:
 - affirm
-- bot_challenge
 - bot_age
+- bot_challenge
 - buy_product
 - cancel_order
 - deny
@@ -20,17 +19,15 @@ intents:
 - show_report
 - stop
 - thanks
-
 entities:
 - product_size
-- product_category
 - product_color
-- product_name
+- product_category
 - product_quantity
+- product_name
 - user_name
 - product_material
 - product_brand
-
 slots:
   user_name:
     type: text
@@ -95,7 +92,6 @@ slots:
       conditions:
       - active_loop: product_form
         requested_slot: product_quantity
-
 forms:
   product_form:
     required_slots:
@@ -104,7 +100,6 @@ forms:
     - product_size
     - product_name
     - product_quantity
-
 responses:
   utter_greet:
   - text: Hi there! Is there anything I can help you with?
@@ -146,12 +141,14 @@ responses:
   - text: The order for {product_name} has been cancelled successfully.
   utter_show_report:
   - text: The report is being generated. Please wait for a moment.
-
 actions:
 - action_submit_product_form
+- utter_help
+- utter_bot_challenge
 - action_reset_product_form
+- utter_goodbye
+- utter_greet
 - validate_product_form
-
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
