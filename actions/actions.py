@@ -96,6 +96,8 @@ class ValidateProductForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         """Validate `product_quantity` value."""
+
+        #TODO: get available quantities for the chosen category
         MIN = 1
         MAX = 20
         if int(slot_value.lower()) < MIN or int(slot_value.lower()) > MAX:
