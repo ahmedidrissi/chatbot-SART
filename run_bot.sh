@@ -2,5 +2,5 @@
 
 python main.py &
 rasa run actions &
-rasa run --cors "*" --enable-api &
+rasa run --enable-api --cors "*" &
 wait
