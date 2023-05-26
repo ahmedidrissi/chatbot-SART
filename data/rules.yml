@@ -32,6 +32,12 @@ rules:
   - intent: bot_challenge
   - action: utter_bot_challenge
 
+#rule to say the bot age if asked
+- rule: say age when asked
+  steps:
+  - intent: bot_age
+  - action: utter_bot_age
+
 #rule to say goodbye when the user say goodbye
 - rule: Say goodbye anytime the user says goodbye
   steps:

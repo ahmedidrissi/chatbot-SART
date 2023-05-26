@@ -24,6 +24,7 @@ nlu:
     - hello i'm [Ahmed Idrissi](user_name)
     - hey there my name is [Mustapha Khalid](user_name)
     - hi i'm [Salim](user_name)
+    - good morning i'm [Marieme Benzha](user_name)
 - intent: thanks
   examples: |
     - Thank you
@@ -41,10 +42,17 @@ nlu:
 - intent: bot_challenge
   examples: |
     - Who are you?
+    - What are you?
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+- intent: bot_age
+  examples: |
+    - What's your age?
+    - How old are you?
+    - Your age?
+    - Age?
 - intent: affirm
   examples: |
     - yes
@@ -147,6 +155,7 @@ nlu:
     - Can you cancel my order for [2](product_quantity) of [Pleated Midi Skirt](product_name)?
     - I no longer need [10](product_quantity) of [Cropped Hoodie](product_name). Can you please cancel the order?
     - Cancel the order
+    - I no longer want this product
 
 - intent: show_report
   examples: |
