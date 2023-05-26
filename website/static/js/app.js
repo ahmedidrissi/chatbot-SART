@@ -34,13 +34,15 @@ msgerForm.addEventListener('submit', event => {
   .then(response => response.json())
   .then(data => {
     const botResp = data[0]['text'];
-    const delay = botResp.split(" ").length * 100;
+    //const delay = botResp.split(" ").length * 100;
 
-    setTimeout(() => {
-      appendMessage(BOT_NAME, BOT_IMG, "left", botResp);
-    }, delay);
+    appendMessage(BOT_NAME, BOT_IMG, "left", botResp);
+    
   })
-  .catch(error => console.error(error));
+  .catch(error => {
+    console.error(error);
+    appendMessage(BOT_NAME, BOT_IMG, "left", "Can you repeat please?");
+  });
 });
 
 function greetUser() {

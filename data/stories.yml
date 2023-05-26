@@ -21,6 +21,46 @@ stories:
     - intent: goodbye
     - action: utter_goodbye
 
+  # happy path
+  - story: happy_path
+    steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: bot_challenge
+    - action: utter_bot_challenge
+    - intent: help
+    - action: utter_help
+    - intent: buy_product
+    - action: product_form
+    - active_loop: product_form
+    - slot_was_set:
+      - requested_slot: product_category
+    - slot_was_set:
+      - product_category: jeans
+    - slot_was_set:
+      - requested_slot: product_color
+    - slot_was_set:
+      - product_color: blue
+    - slot_was_set:
+      - requested_slot: product_size
+    - slot_was_set:
+      - product_size: xl
+    - slot_was_set:
+      - requested_slot: product_name
+    - slot_was_set:
+      - product_name: edgy skinny jeans
+    - slot_was_set:
+      - requested_slot: product_quantity
+    - slot_was_set:
+      - product_quantity: 2
+    - slot_was_set:
+      - requested_slot: null
+    - active_loop: null
+    - action: action_submit_product_form
+    - action: action_reset_product_form
+    - intent: goodbye
+    - action: utter_goodbye
+    
   - story: interactive_story_1
     steps:
     - intent: greet
