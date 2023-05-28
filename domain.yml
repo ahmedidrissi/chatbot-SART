@@ -115,9 +115,9 @@ responses:
   - text: Of course! What do you need help with?
   - text: I'm here to assist you. What do you need help with?
   utter_bot_challenge:
-  - text: I'm Chatbot S.A.R.T, your personal Style Assistant and Retail Technology.
-  - text: I'm a Chatbot. My name is S.A.R.T, which stands for Style Assistant and Retail Technology.
-  - text: I'm a Chatbot. Call me S.A.R.T, which is short for Style Assistant and Retail Technology.
+  - text: I'm Chatbot SART, your personal Style Assistant and Retail Technology.
+  - text: I'm a Chatbot. My name is SART, which stands for Style Assistant and Retail Technology.
+  - text: I'm a Chatbot. Call me SART, which is short for Style Assistant and Retail Technology.
   utter_bot_age:
   - text: Same as yours
   utter_goodbye:
