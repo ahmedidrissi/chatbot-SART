@@ -4,14 +4,10 @@ const msgerChat = get(".msger-chat");
 
 // Chatbot icons by Icons8 from https://icons8.com/icon/79UfeEN6JkZ8/chatbot
 // User icon by Icons8 from https://icons8.com/icon/kDoeg22e5jUY/male-user
-const BOT_IMG = "https:// img.icons8.com/fluency/48/null/chatbot.png";
-const PERSON_IMG = "https:// img.icons8.com/fluency/48/null/user-male-circle.png";
+const BOT_IMG = "https://img.icons8.com/fluency/48/null/chatbot.png";
+const PERSON_IMG = "https://img.icons8.com/fluency/48/null/user-male-circle.png";
 const BOT_NAME = "SART";
 const PERSON_NAME = "User";
-
-const synthesis = window.speechSynthesis;
-const utterance = new SpeechSynthesisUtterance();
-synthesis.cancel();
 
 var greet = false;
 
@@ -58,10 +54,6 @@ msgerForm.addEventListener('submit', event => {
 
 function greetUser() {
   if (!greet) {
-    let voices = speechSynthesis.getVoices();
-    console.log(voices);
-    utterance.voice = voices[1];
-
     const msg = "Hi, I'm SART! Go ahead and send me a message.";
     setTimeout(() => {
       appendMessage(BOT_NAME, BOT_IMG, "left", msg);
@@ -69,7 +61,6 @@ function greetUser() {
 
     utterance.text = msg;
     synthesis.speak(utterance);
-    
     greet = true;
   }
 }
