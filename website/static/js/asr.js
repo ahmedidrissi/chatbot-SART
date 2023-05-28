@@ -1,6 +1,7 @@
 try {
     const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
+    
     //let final_transcript = "";
 
     recognition.continuous = false;

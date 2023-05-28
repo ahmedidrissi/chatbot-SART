@@ -9,6 +9,10 @@ const PERSON_IMG = "https:// img.icons8.com/fluency/48/null/user-male-circle.png
 const BOT_NAME = "SART";
 const PERSON_NAME = "User";
 
+const synthesis = window.speechSynthesis;
+const utterance = new SpeechSynthesisUtterance();
+synthesis.cancel();
+
 var greet = false;
 
 window.addEventListener('load', function() {
@@ -39,20 +43,33 @@ msgerForm.addEventListener('submit', event => {
   .then(botResponses => {
     botResponses.forEach(botResp => {
       appendMessage(BOT_NAME, BOT_IMG, "left", botResp);
+      utterance.text = botResp;
+      synthesis.speak(utterance);
     });
   })
   .catch(error => {
     console.error(error);
-    appendMessage(BOT_NAME, BOT_IMG, "left", "Can you repeat please?");
+    let botResp = "Can you repeat please?";
+    appendMessage(BOT_NAME, BOT_IMG, "left", botResp);
+    utterance.text = botResp;
+    synthesis.speak(utterance);
   });
 });
 
 function greetUser() {
   if (!greet) {
+    let voices = speechSynthesis.getVoices();
+    console.log(voices);
+    utterance.voice = voices[1];
+
     const msg = "Hi, I'm SART! Go ahead and send me a message.";
     setTimeout(() => {
       appendMessage(BOT_NAME, BOT_IMG, "left", msg);
     }, 1000);
+
+    utterance.text = msg;
+    synthesis.speak(utterance);
+    
     greet = true;
   }
 }
