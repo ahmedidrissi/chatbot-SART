@@ -8,12 +8,16 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 
 import pandas as pd
+import test
 
 df = pd.read_csv("./actions/products.csv", sep='|')
+pc = pd.read_csv("./actions/product_color.csv",sep=',')
+ps = pd.read_csv("./actions/product_size.csv",sep=',')
 ALLOWED_PRODUCT_CATEGORIES = list(df['category'].unique())
-ALLOWED_PRODUCT_SIZES = ["s", "m", "l", "xl"]
-ALLOWED_PRODUCT_COLORS = ["red","black","blue","yellow","white","purple","brown","green","kaki","pink","grey"]
-ALLOWED_PRODUCT_NAMES = []
+ALLOWED_PRODUCT_SIZES = list(pc['color'].unique())
+ALLOWED_PRODUCT_COLORS = list(ps['size'].unique())
+ALLOWED_PRODUCT_NAMES = list(df['name'].unique())
+
 
 class ValidateProductForm(FormValidationAction):
     def name(self) -> Text:
@@ -42,11 +46,14 @@ class ValidateProductForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         """Validate `product_color` value."""
+         # Get the value of the `product_category` slot
+         product_category = tracker.get_slot('product_category')
+        
 
-        #TODO: get available colors for the chosen category
-
-        if slot_value not in ALLOWED_PRODUCT_COLORS:
-            dispatcher.utter_message(text=f"I don't recognize the color. We serve {', '.join(ALLOWED_PRODUCT_COLORS)}.")
+        # get available colors for the chosen category
+        colors=test.get_color_by_category(product_category)
+        if slot_value not in colors:
+            dispatcher.utter_message(text=f"I don't recognize the color. We serve {', '.join(colors)} in this categoryw.")
             return {"product_color": None}
         dispatcher.utter_message(text=f"You want to have the {slot_value} color.")
         return {"product_color": slot_value}
@@ -60,17 +67,20 @@ class ValidateProductForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate `product_size` value."""
 
-        #TODO: get available sizes for the chosen category
+        # get available sizes for the chosen category
 
         category = tracker.get_slot("product_category")
+        color = tracker.get_slot("product_color")
+        size=test.get_size_by_color(color,category)
         data = df[df['category'] == category]
         names = data['name']
         ALLOWED_PRODUCT_NAMES = list(map(str.lower, names))
+        
 
-        if slot_value.lower() not in ALLOWED_PRODUCT_SIZES:
-            dispatcher.utter_message(text=f"We only accept product sizes: {', '.join(ALLOWED_PRODUCT_SIZES)}.")
+        if slot_value.lower() not in size:
+            dispatcher.utter_message(text=f"We have those sizes in the category and the color you choosed: {', '.join(size)}.")
             return {"product_size": None}
-        dispatcher.utter_message(text=f"You want to have the {slot_value} size.\nWe have those products in the chosen category: {', '.join(ALLOWED_PRODUCT_NAMES)}.")
+        dispatcher.utter_message(text=f"You want to have the {slot_value} size.\nWe have those products in the chosen category : {', '.join(ALLOWED_PRODUCT_NAMES)}.")
         return {"product_size": slot_value}
         
     def validate_product_name(
@@ -83,12 +93,12 @@ class ValidateProductForm(FormValidationAction):
         """Validate `product_name` value."""
 
         category = tracker.get_slot("product_category")
-        data = df[df['category'] == category]
-        names = data['name']
-        ALLOWED_PRODUCT_NAMES = list(map(str.lower, names))
+        color = tracker.get_slot("product_color")
+        size=tracker.get_slot("product_size")
+        names=test.get_product_name(category, color, size)
 
-        if slot_value.lower() not in ALLOWED_PRODUCT_NAMES:
-            dispatcher.utter_message(text=f"We only have those products in the chosen category: {', '.join(ALLOWED_PRODUCT_NAMES)}.")
+        if slot_value.lower() not in names:
+            dispatcher.utter_message(text=f"We only have those products in the chosen category , color and size: {', '.join(names)}.")
             return {"product_name": None}
         dispatcher.utter_message(text=f"You choosed {slot_value}.")
         return {"product_name": slot_value}
@@ -102,11 +112,14 @@ class ValidateProductForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate `product_quantity` value."""
 
-        #TODO: get available quantities for the chosen category
-        MIN = 1
-        MAX = 20
-        if int(slot_value.lower()) < MIN or int(slot_value.lower()) > MAX:
-            dispatcher.utter_message(text=f"We only have {MAX} from this products.")
+        # get available quantities for the chosen name, color and size
+        name = tracker.get_slot("product_name")
+        color = tracker.get_slot("product_color")
+        size=tracker.get_slot("product_size")
+        quantity=test.get_product_quantity_by_size(color, size, name)
+        
+        if int(slot_value.lower()) < 1 or int(slot_value.lower()) > quantity:
+            dispatcher.utter_message(text=f"We only have {quantity} from this products.")
             return {"product_quantity": None}
         dispatcher.utter_message(text=f"OK! You want to have {slot_value} from this product.")
         return {"product_quantity": slot_value}
