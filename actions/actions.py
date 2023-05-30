@@ -8,9 +8,9 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 
 import pandas as pd
-from SGBD import mySGBD
+from actions import SGBD
 
-sgbd = mySGBD()
+sgbd = SGBD.mySGBD()
 
 class ValidateProductForm(FormValidationAction):
     def name(self) -> Text:
