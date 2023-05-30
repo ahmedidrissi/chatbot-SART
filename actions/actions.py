@@ -47,7 +47,7 @@ class ValidateProductForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate `product_color` value."""
          # Get the value of the `product_category` slot
-         product_category = tracker.get_slot('product_category')
+        product_category = tracker.get_slot('product_category')
         
 
         # get available colors for the chosen category
