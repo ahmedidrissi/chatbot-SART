@@ -8,16 +8,9 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 
 import pandas as pd
-import test
+from SGBD import mySGBD
 
-df = pd.read_csv("./actions/products.csv", sep='|')
-pc = pd.read_csv("./actions/product_color.csv",sep=',')
-ps = pd.read_csv("./actions/product_size.csv",sep=',')
-ALLOWED_PRODUCT_CATEGORIES = list(df['category'].unique())
-ALLOWED_PRODUCT_SIZES = list(pc['color'].unique())
-ALLOWED_PRODUCT_COLORS = list(ps['size'].unique())
-ALLOWED_PRODUCT_NAMES = list(df['name'].unique())
-
+sgbd = mySGBD()
 
 class ValidateProductForm(FormValidationAction):
     def name(self) -> Text:
@@ -32,10 +25,10 @@ class ValidateProductForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate `product_category` value."""
 
-        if slot_value.lower() not in ALLOWED_PRODUCT_CATEGORIES:
-            dispatcher.utter_message(text=f"We only accept those categories: {', '.join(ALLOWED_PRODUCT_CATEGORIES)}.")
+        if slot_value.lower() not in sgbd.allowed_categories:
+            dispatcher.utter_message(text=f"We only accept those categories: {', '.join(sgbd.allowed_categories)}.")
             return {"product_category": None}
-        dispatcher.utter_message(text=f"We have {slot_value}.")
+        dispatcher.utter_message(text=f"We have in {slot_value} category those colors: {', '.join(sgbd.get_colors_by_category(slot_value))}.")
         return {"product_category": slot_value}
 
     def validate_product_color(
@@ -46,16 +39,11 @@ class ValidateProductForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         """Validate `product_color` value."""
-         # Get the value of the `product_category` slot
-        product_category = tracker.get_slot('product_category')
         
-
-        # get available colors for the chosen category
-        colors=test.get_color_by_category(product_category)
-        if slot_value not in colors:
-            dispatcher.utter_message(text=f"I don't recognize the color. We serve {', '.join(colors)} in this categoryw.")
+        if slot_value not in sgbd.allowed_colors:
+            dispatcher.utter_message(text=f"I don't recognize the color. We serve {', '.join(sgbd.allowed_colors)} in this category.")
             return {"product_color": None}
-        dispatcher.utter_message(text=f"You want to have the {slot_value} color.")
+        dispatcher.utter_message(text=f"You want to have the {slot_value} color. We have those sizes: {', '.join(sgbd.get_sizes_by_color(slot_value))}")
         return {"product_color": slot_value}
     
     def validate_product_size(
@@ -67,20 +55,10 @@ class ValidateProductForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate `product_size` value."""
 
-        # get available sizes for the chosen category
-
-        category = tracker.get_slot("product_category")
-        color = tracker.get_slot("product_color")
-        size=test.get_size_by_color(color,category)
-        data = df[df['category'] == category]
-        names = data['name']
-        ALLOWED_PRODUCT_NAMES = list(map(str.lower, names))
-        
-
-        if slot_value.lower() not in size:
-            dispatcher.utter_message(text=f"We have those sizes in the category and the color you choosed: {', '.join(size)}.")
+        if slot_value.lower() not in sgbd.allowed_sizes:
+            dispatcher.utter_message(text=f"We only have thoses sizes: {', '.join(sgbd.allowed_sizes)}.")
             return {"product_size": None}
-        dispatcher.utter_message(text=f"You want to have the {slot_value} size.\nWe have those products in the chosen category : {', '.join(ALLOWED_PRODUCT_NAMES)}.")
+        dispatcher.utter_message(text=f"You want to have the {slot_value} size. We have those products in stock: {', '.join(sgbd.get_product_name_by_size(slot_value))}.")
         return {"product_size": slot_value}
         
     def validate_product_name(
@@ -92,15 +70,10 @@ class ValidateProductForm(FormValidationAction):
     ) -> Dict[Text, Any]:
         """Validate `product_name` value."""
 
-        category = tracker.get_slot("product_category")
-        color = tracker.get_slot("product_color")
-        size=tracker.get_slot("product_size")
-        names=test.get_product_name(category, color, size)
-
-        if slot_value.lower() not in names:
-            dispatcher.utter_message(text=f"We only have those products in the chosen category , color and size: {', '.join(names)}.")
+        if slot_value.lower() not in sgbd.allowed_products:
+            dispatcher.utter_message(text=f"We only have those products in stock: {', '.join(sgbd.allowed_products)}.")
             return {"product_name": None}
-        dispatcher.utter_message(text=f"You choosed {slot_value}.")
+        dispatcher.utter_message(text=f"We have {sgbd.get_product_quantity_by_size()} from {slot_value}")
         return {"product_name": slot_value}
 
     def validate_product_quantity(
@@ -111,15 +84,9 @@ class ValidateProductForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         """Validate `product_quantity` value."""
-
-        # get available quantities for the chosen name, color and size
-        name = tracker.get_slot("product_name")
-        color = tracker.get_slot("product_color")
-        size=tracker.get_slot("product_size")
-        quantity=test.get_product_quantity_by_size(color, size, name)
         
-        if int(slot_value.lower()) < 1 or int(slot_value.lower()) > quantity:
-            dispatcher.utter_message(text=f"We only have {quantity} from this products.")
+        if int(slot_value.lower()) < 1 or int(slot_value.lower()) > sgbd.allowed_quantity:
+            dispatcher.utter_message(text=f"We only have {sgbd.allowed_quantity} from this products.")
             return {"product_quantity": None}
         dispatcher.utter_message(text=f"OK! You want to have {slot_value} from this product.")
         return {"product_quantity": slot_value}
@@ -134,6 +101,7 @@ class SubmitProductForm(Action):
         domain: DomainDict,
     ) -> List[Dict[Text, Any]]:
 
+        #TODO: submit the order
         dispatcher.utter_message(text="Your order has been successfully placed.")
         return []
 
