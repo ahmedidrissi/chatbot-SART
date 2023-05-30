@@ -19,7 +19,9 @@ class mySGBD():
         self.allowed_sizes = [] # list of the allowed sizes for the chosen color
         
         self.allowed_prd = None # table of the allowed products for the chosen size
-        self.allowed_product = [] # list of the allowed products
+        self.allowed_products = [] # list of the allowed products
+
+        self.allowed_quantity = 1 # product quantity in stock
     
     #get available colors for the chosen category
     def get_colors_by_category(self, category):
@@ -57,9 +59,9 @@ class mySGBD():
     #get available product's quantity for the chosen product name
     def get_product_quantity_by_size(self):
 
-        product_quantity = self.allowed_prd_s['size_quantity'].tolist()
+        self.allowed_quantity = self.allowed_prd_s['size_quantity'].tolist()[0]
 
-        return product_quantity
+        return self.allowed_quantity
     
 if __name__ == '__main__':
 
