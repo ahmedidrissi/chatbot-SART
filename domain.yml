@@ -1,6 +1,7 @@
 version: '3.1'
 intents:
 - affirm
+- bot_age
 - bot_challenge
 - buy_product
 - cancel_order
@@ -20,10 +21,10 @@ intents:
 - thanks
 entities:
 - product_size
-- product_category
 - product_color
-- product_name
+- product_category
 - product_quantity
+- product_name
 - user_name
 - product_material
 - product_brand
@@ -114,9 +115,11 @@ responses:
   - text: Of course! What do you need help with?
   - text: I'm here to assist you. What do you need help with?
   utter_bot_challenge:
-  - text: I'm Chatbot S.A.R.T, your personal Style Assistant and Retail Technology.
-  - text: I'm a Chatbot.My name is S.A.R.T, which stands for Style Assistant and Retail Technology.
-  - text: I'm a Chatbot. Call me S.A.R.T, which is short for Style Assistant and Retail Technology.
+  - text: I'm Chatbot SART, your personal Style Assistant and Retail Technology.
+  - text: I'm a Chatbot. My name is SART, which stands for Style Assistant and Retail Technology.
+  - text: I'm a Chatbot. Call me SART, which is short for Style Assistant and Retail Technology.
+  utter_bot_age:
+  - text: Same as yours
   utter_goodbye:
   - text: Goodbye! Have a nice day.
   - text: Bye! Take care!
@@ -139,11 +142,12 @@ responses:
   utter_show_report:
   - text: The report is being generated. Please wait for a moment.
 actions:
+- action_submit_product_form
+- utter_help
+- utter_bot_challenge
+- action_reset_product_form
 - utter_goodbye
 - utter_greet
-- utter_welcome
-- action_submit_product_form
-- action_reset_product_form
 - validate_product_form
 session_config:
   session_expiration_time: 60

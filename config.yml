@@ -12,9 +12,9 @@ pipeline:
    min_ngram: 1
    max_ngram: 4
  - name: DIETClassifier
-   epochs: 100
- - name: FallbackClassifier
-   threshold: 0.3
+   epochs: 200
+   ranking_length: 5
+   constrain_similarities: true
 
 policies:
  - name: MemoizationPolicy

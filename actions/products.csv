@@ -1,46 +1,46 @@
-"id"|"name"|"category"|"description"|"quantity"|"material"|"brand"|"price"
-"1"|"Crewneck Sweater"|"sweaters"|"Classic and cozy crewneck sweater"|"20"|"100% cotton"|"J.Crew"|"79.99"
-"2"|"Bomber Jacket"|"jackets"|"Stylish and versatile bomber jacket"|"18"|"100% polyester"|"Topman"|"69.99"
-"3"|"High-Rise Skinny Jeans"|"jeans"|"Flattering and comfortable high-rise skinny jeans"|"30"|"98% cotton, 2% elastane"|"Madewell"|"128.00"
-"4"|"Plaid Button-Up Shirt"|"shirts"|"Classic and versatile plaid button-up shirt"|"10"|"100% cotton"|"Abercrombie & Fitch"|"49.95"
-"5"|"Suede Ankle Boots"|"shoes"|"Stylish and comfortable suede ankle boots"|"15"|"100% suede"|"Clarks"|"139.99"
-"6"|"Puffer Vest"|"vests"|"Warm and lightweight puffer vest"|"12"|"100% polyester"|"Old Navy"|"34.99"
-"7"|"Striped T-Shirt Dress"|"dresses"|"Effortlessly chic striped t-shirt dress"|"6"|"95% cotton, 5% spandex"|"Gap"|"59.95"
-"8"|"Hooded Sweatshirt"|"sweatshirts"|"Hooded sweatshirt in a soft cotton-blend fabric with front pouch pocket."|"35"|"80% cotton, 20% polyester"|"Nike"|"79.99"
-"9"|"Ripped Skinny Jeans"|"jeans"|"Edgy and stylish ripped skinny jeans"|"8"|"98% cotton, 2% elastane"|"Hollister"|"59.95"
-"10"|"Fleece-Lined Leggings"|"leggings"|"Warm and comfortable fleece-lined leggings"|"10"|"92% polyester, 8% spandex"|"Under Armour"|"50.00"
-"11"|"Turtleneck Sweater"|"sweaters"|"Cozy and stylish turtleneck sweater"|"7"|"70% wool, 30% nylon"|"Everlane"|"95.00"
-"12"|"Biker Boots"|"shoes"|"Edgy and durable biker boots"|"4"|"100% leather"|"Dr. Martens"|"150.00"
-"13"|"Pleated Midi Skirt"|"dresses"|"Elegant and versatile pleated midi skirt"|"10"|"100% polyester"|"Asos"|"55.00"
-"14"|"Cropped Hoodie"|"hoodies"|"Stylish and comfortable cropped hoodie"|"6"|"60% cotton, 40% polyester"|"Urban Outfitters"|"49.00"
-"15"|"Faux Leather Jacket"|"jackets"|"Edgy and versatile faux leather jacket"|"3"|"100% polyurethane"|"Zara"|"69.90"
-"16"|"Wide-Leg Pants"|"pants"|"Sophisticated and comfortable wide-leg pants"|"10"|"65% viscose, 35% linen"|"Mango"|"79.99"
-"17"|"Tie-Dye Sweatshirt"|"sweatshirts"|"Trendy and comfortable tie-dye sweatshirt"|"10"|"50% cotton, 50% polyester"|"Forever 21"|"24.99"
-"18"|"Corduroy Skirt"|"skirts"|"Retro and stylish corduroy skirt"|"5"|"100% cotton"|"Free People"|"68.00"
-"19"|"Wool Coat"|"coats"|"Classic and sophisticated wool coat"|"2"|"80% wool, 20% nylon"|"J.Crew"|"298.00"
-"20"|"Ankle Strap Sandals"|"shoes"|"Elegant and versatile ankle strap sandals"|"8"|"100% leather"|"Steve Madden"|"89.95"
-"21"|"Graphic T-Shirt"|"t-shirts"|"Cool and edgy graphic t-shirt"|"18"|"100% cotton"|"Volcom"|"25.00"
-"22"|"Cargo Pants"|"pants"|"Durable and versatile cargo pants"|"10"|"100% cotton"|"Dickies"|"44.99"
-"23"|"Oversized Cardigan"|"cardiagans"|"Comfortable and stylish oversized cardigan"|"7"|"50% acrylic, 50% cotton"|"H&M"|"49.99"
-"24"|"Denim Jacket"|"jackets"|"Classic and versatile denim jacket"|"14"|"100% cotton"|"Levi"|"98.00"
-"25"|"Maxi Dress"|"dresses"|"Elegant and versatile maxi dress"|"5"|"100% polyester"|"Nordstrom"|"149.00"
-"26"|"Chelsea Boots"|"shoes"|"Classic and versatile Chelsea boots"|"10"|"100% leather"|"Clarks"|"110.00"
-"27"|"Crop Top"|"tops"|"Stylish and trendy crop top"|"12"|"95% cotton, 5% spandex"|"American Apparel"|"28.00"
-"28"|"Floral Print Skirt"|"skirts"|"Feminine and versatile floral print skirt"|"9"|"100% polyester"|"Zara"|"49.90"
-"29"|"Biker Jacket"|"jackets"|"Edgy and versatile biker jacket"|"5"|"100% polyurethane"|"Mango"|"99.99"
-"30"|"Loose Fit Jeans"|"jeans"|"Comfortable and stylish loose fit jeans"|"8"|"100% cotton"|"Topshop"|"85.00"
-"31"|"Leather Skirt"|"skirts"|"Chic and stylish leather skirt"|"4"|"100% leather"|"Mango"|"119.00"
-"32"|"Printed Blouse"|"blouses"|"Eye-catching printed blouse"|"12"|"100% polyester"|"Topshop"|"69.00"
-"33"|"Knit Sweater"|"sweaters"|"Cozy and comfortable knit sweater"|"10"|"50% wool, 50% acrylic"|"Zara"|"49.99"
-"34"|"Cropped Flare Jeans"|"jeans"|"On-trend cropped flare jeans"|"8"|"98% cotton, 2% elastane"|"H&M"|"39.99"
-"35"|"Satin Midi Skirt"|"skirts"|"Feminine and elegant satin midi skirt"|"5"|"100% polyester"|"Mango"|"79.99"
-"36"|"Chunky Knit Cardigan"|"cardigans"|"Warm and cozy chunky knit cardigan"|"3"|"70% acrylic, 30% wool"|"Topshop"|"99.00"
-"37"|"Leather Shoulder Bag"|"accessories"|"Stylish and practical leather shoulder bag"|"10"|"100% leather"|"Zara"|"59.99"
-"38"|"Pleated Midi Dress"|"dresses"|"Elegant and feminine pleated midi dress"|"7"|"100% polyester"|"Mango"|"99.99"
-"39"|"Wool-Blend Coat"|"coats"|"Wool-blend coat with a notched lapel collar, long sleeves, and front flap pockets."|"5"|"50% wool, 50% polyester"|"Calvin Klein"|"249.99"
-"40"|"V-Neck Sweater"|"sweaters"|"V-neck sweater in a soft knit material with ribbed trim."|"12"|"70% acrylic, 30% wool"|"H&M"|"39.99"
-"41"|"Pleated Maxi Dress"|"sresses"|"Pleated maxi dress with a V-neckline and spaghetti straps."|"8"|"100% polyester"|"Zara"|"119.99"
-"42"|"Leather Ankle Boots"|"shoes"|"Leather ankle boots with a block heel and side zip fastening."|"7"|"100% leather"|"Steve Madden"|"149.99"
-"43"|"Cropped Denim Jacket"|"jackets"|"Cropped denim jacket with a collar, long sleeves, and button fastening."|"18"|"100% cotton"|"Guess"|"89.99"
-"44"|"Striped Button-Up Shirt"|"shirts"|"Striped button-up shirt with a pointed collar and long sleeves."|"11"|"100% cotton"|"Ralph Lauren"|"69.99"
-"45"|"Suede Mini Skirt"|"skirts"|"Suede mini skirt with a button-front closure and patch pockets."|"6"|"100% leather"|"Mango"|"79.99"
+id,name,category,description,quantity,material,brand,price
+1,Crewneck Sweater,sweaters,Classic and cozy crewneck sweater,20,100% cotton,J.Crew,79.99
+2,Bomber Jacket,jackets,Stylish and versatile bomber jacket,18,100% polyester,Topman,69.99
+3,High-Rise Skinny Jeans,jeans,Flattering and comfortable high-rise skinny jeans,30,"98% cotton, 2% elastane",Madewell,128.00
+4,Plaid Button-Up Shirt,shirts,Classic and versatile plaid button-up shirt,10,100% cotton,Abercrombie & Fitch,49.95
+5,Suede Ankle Boots,shoes,Stylish and comfortable suede ankle boots,15,100% suede,Clarks,139.99
+6,Puffer Vest,vests,Warm and lightweight puffer vest,12,100% polyester,Old Navy,34.99
+7,Striped T-Shirt Dress,dresses,Effortlessly chic striped t-shirt dress,6,"95% cotton, 5% spandex",Gap,59.95
+8,Hooded Sweatshirt,sweatshirts,Hooded sweatshirt in a soft cotton-blend fabric with front pouch pocket.,35,"80% cotton, 20% polyester",Nike,79.99
+9,Ripped Skinny Jeans,jeans,Edgy and stylish ripped skinny jeans,8,"98% cotton, 2% elastane",Hollister,59.95
+10,Fleece-Lined Leggings,leggings,Warm and comfortable fleece-lined leggings,10,"92% polyester, 8% spandex",Under Armour,50.00
+11,Turtleneck Sweater,sweaters,Cozy and stylish turtleneck sweater,7,"70% wool, 30% nylon",Everlane,95.00
+12,Biker Boots,shoes,Edgy and durable biker boots,4,100% leather,Dr. Martens,150.00
+13,Pleated Midi Skirt,dresses,Elegant and versatile pleated midi skirt,10,100% polyester,Asos,55.00
+14,Cropped Hoodie,hoodies,Stylish and comfortable cropped hoodie,6,"60% cotton, 40% polyester",Urban Outfitters,49.00
+15,Faux Leather Jacket,jackets,Edgy and versatile faux leather jacket,3,100% polyurethane,Zara,69.90
+16,Wide-Leg Pants,pants,Sophisticated and comfortable wide-leg pants,10,"65% viscose, 35% linen",Mango,79.99
+17,Tie-Dye Sweatshirt,sweatshirts,Trendy and comfortable tie-dye sweatshirt,10,"50% cotton, 50% polyester",Forever 21,24.99
+18,Corduroy Skirt,skirts,Retro and stylish corduroy skirt,5,100% cotton,Free People,68.00
+19,Wool Coat,coats,Classic and sophisticated wool coat,2,"80% wool, 20% nylon",J.Crew,298.00
+20,Ankle Strap Sandals,shoes,Elegant and versatile ankle strap sandals,8,100% leather,Steve Madden,89.95
+21,Graphic T-Shirt,t-shirts,Cool and edgy graphic t-shirt,18,100% cotton,Volcom,25.00
+22,Cargo Pants,pants,Durable and versatile cargo pants,10,100% cotton,Dickies,44.99
+23,Oversized Cardigan,cardiagans,Comfortable and stylish oversized cardigan,7,"50% acrylic, 50% cotton",H&M,49.99
+24,Denim Jacket,jackets,Classic and versatile denim jacket,14,100% cotton,Levi,98.00
+25,Maxi Dress,dresses,Elegant and versatile maxi dress,5,100% polyester,Nordstrom,149.00
+26,Chelsea Boots,shoes,Classic and versatile Chelsea boots,10,100% leather,Clarks,110.00
+27,Crop Top,tops,Stylish and trendy crop top,12,"95% cotton, 5% spandex",American Apparel,28.00
+28,Floral Print Skirt,skirts,Feminine and versatile floral print skirt,9,100% polyester,Zara,49.90
+29,Biker Jacket,jackets,Edgy and versatile biker jacket,5,100% polyurethane,Mango,99.99
+30,Loose Fit Jeans,jeans,Comfortable and stylish loose fit jeans,8,100% cotton,Topshop,85.00
+31,Leather Skirt,skirts,Chic and stylish leather skirt,4,100% leather,Mango,119.00
+32,Printed Blouse,blouses,Eye-catching printed blouse,12,100% polyester,Topshop,69.00
+33,Knit Sweater,sweaters,Cozy and comfortable knit sweater,10,"50% wool, 50% acrylic",Zara,49.99
+34,Cropped Flare Jeans,jeans,On-trend cropped flare jeans,8,"98% cotton, 2% elastane",H&M,39.99
+35,Satin Midi Skirt,skirts,Feminine and elegant satin midi skirt,5,100% polyester,Mango,79.99
+36,Chunky Knit Cardigan,cardigans,Warm and cozy chunky knit cardigan,3,"70% acrylic, 30% wool",Topshop,99.00
+37,Leather Shoulder Bag,accessories,Stylish and practical leather shoulder bag,10,100% leather,Zara,59.99
+38,Pleated Midi Dress,dresses,Elegant and feminine pleated midi dress,7,100% polyester,Mango,99.99
+39,Wool-Blend Coat,coats,"Wool-blend coat with a notched lapel collar, long sleeves, and front flap pockets.",5,"50% wool, 50% polyester",Calvin Klein,249.99
+40,V-Neck Sweater,sweaters,V-neck sweater in a soft knit material with ribbed trim.,12,"70% acrylic, 30% wool",H&M,39.99
+41,Pleated Maxi Dress,sresses,Pleated maxi dress with a V-neckline and spaghetti straps.,8,100% polyester,Zara,119.99
+42,Leather Ankle Boots,shoes,Leather ankle boots with a block heel and side zip fastening.,7,100% leather,Steve Madden,149.99
+43,Cropped Denim Jacket,jackets,"Cropped denim jacket with a collar, long sleeves, and button fastening.",18,100% cotton,Guess,89.99
+44,Striped Button-Up Shirt,shirts,Striped button-up shirt with a pointed collar and long sleeves.,11,100% cotton,Ralph Lauren,69.99
+45,Suede Mini Skirt,skirts,Suede mini skirt with a button-front closure and patch pockets.,6,100% leather,Mango,79.99

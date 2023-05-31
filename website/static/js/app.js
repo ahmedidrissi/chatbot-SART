@@ -4,8 +4,8 @@ const msgerChat = get(".msger-chat");
 
 // Chatbot icons by Icons8 from https://icons8.com/icon/79UfeEN6JkZ8/chatbot
 // User icon by Icons8 from https://icons8.com/icon/kDoeg22e5jUY/male-user
-const BOT_IMG = "https:// img.icons8.com/fluency/48/null/chatbot.png";
-const PERSON_IMG = "https:// img.icons8.com/fluency/48/null/user-male-circle.png";
+const BOT_IMG = "https://img.icons8.com/fluency/48/null/chatbot.png";
+const PERSON_IMG = "https://img.icons8.com/fluency/48/null/user-male-circle.png";
 const BOT_NAME = "SART";
 const PERSON_NAME = "User";
 
@@ -33,14 +33,23 @@ msgerForm.addEventListener('submit', event => {
   })
   .then(response => response.json())
   .then(data => {
-    const botResp = data[0]['text'];
-    const delay = botResp.split(" ").length * 100;
-
-    setTimeout(() => {
-      appendMessage(BOT_NAME, BOT_IMG, "left", botResp);
-    }, delay);
+    const promises = data.map(item => item.text);
+    return Promise.all(promises);
   })
-  .catch(error => console.error(error));
+  .then(botResponses => {
+    botResponses.forEach(botResp => {
+      appendMessage(BOT_NAME, BOT_IMG, "left", botResp);
+      utterance.text = botResp;
+      synthesis.speak(utterance);
+    });
+  })
+  .catch(error => {
+    console.error(error);
+    let botResp = "Can you repeat please?";
+    appendMessage(BOT_NAME, BOT_IMG, "left", botResp);
+    utterance.text = botResp;
+    synthesis.speak(utterance);
+  });
 });
 
 function greetUser() {
@@ -49,6 +58,9 @@ function greetUser() {
     setTimeout(() => {
       appendMessage(BOT_NAME, BOT_IMG, "left", msg);
     }, 1000);
+
+    utterance.text = msg;
+    synthesis.speak(utterance);
     greet = true;
   }
 }
