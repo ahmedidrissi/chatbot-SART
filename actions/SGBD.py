@@ -63,6 +63,29 @@ class mySGBD():
 
         return self.allowed_quantity
     
+    #update the quantity of the ordered product
+    def update_quantity(self, product, color, size, ordered_quantity):
+        
+        self.prd_s.loc[(self.prd_s['product_id'] == product.id) & (self.prd_s['color_id'] == color.id) & (self.prd_s['size'].str.lower() == size.lower()), 'size_quantity'] -= ordered_quantity
+
+        
+        self.prd_s = self.prd_s[self.prd_s['size_quantity'] > 0]
+
+        
+        self.prd_c.loc[(self.prd_c['product_id'] == product.id) & (self.prd_c['id'] == color.id), 'color_quantity'] -= ordered_quantity
+
+        
+        self.prd_c = self.prd_c[self.prd_c['color_quantity'] > 0]
+
+         
+        self.prd.loc[self.prd['id'] == product.id, 'quantity'] -= ordered_quantity
+
+        
+        self.prd = self.prd[self.prd['quantity'] > 0]
+
+
+
+    
 if __name__ == '__main__':
 
     #code to test the functions

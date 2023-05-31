@@ -101,7 +101,12 @@ class SubmitProductForm(Action):
         domain: DomainDict,
     ) -> List[Dict[Text, Any]]:
 
-        #TODO: submit the order
+        # submit the order
+        product_name = tracker.get_slot("product_name")
+        color = tracker.get_slot("product_color")
+        size = tracker.get_slot("product_size")
+        ordered_quantity = tracker.get_slot("producct_quantity")
+        sgdb.update_quantity(self, product_name, color, size, ordered_quantity)
         dispatcher.utter_message(text="Your order has been successfully placed.")
         return []
 
