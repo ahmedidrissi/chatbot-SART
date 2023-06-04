@@ -20,46 +20,6 @@ stories:
     - action: utter_show_report
     - intent: goodbye
     - action: utter_goodbye
-
-  # happy path
-  - story: happy_path
-    steps:
-    - intent: greet
-    - action: utter_greet
-    - intent: bot_challenge
-    - action: utter_bot_challenge
-    - intent: help
-    - action: utter_help
-    - intent: buy_product
-    - action: product_form
-    - active_loop: product_form
-    - slot_was_set:
-      - requested_slot: product_category
-    - slot_was_set:
-      - product_category: jeans
-    - slot_was_set:
-      - requested_slot: product_color
-    - slot_was_set:
-      - product_color: blue
-    - slot_was_set:
-      - requested_slot: product_size
-    - slot_was_set:
-      - product_size: xl
-    - slot_was_set:
-      - requested_slot: product_name
-    - slot_was_set:
-      - product_name: edgy skinny jeans
-    - slot_was_set:
-      - requested_slot: product_quantity
-    - slot_was_set:
-      - product_quantity: 2
-    - slot_was_set:
-      - requested_slot: null
-    - active_loop: null
-    - action: action_submit_product_form
-    - action: action_reset_product_form
-    - intent: goodbye
-    - action: utter_goodbye
     
   - story: interactive_story_1
     steps:
@@ -140,3 +100,62 @@ stories:
     - intent: goodbye
     - action: utter_goodbye
     - intent: stop
+
+- story: interactive_story_2
+  steps:
+  - intent: greet_with_name
+    entities:
+    - user_name: zakaria charkaoui
+  - slot_was_set:
+    - user_name: zakaria charkaoui
+  - action: utter_greet_with_name
+  - intent: bot_challenge
+  - action: utter_bot_challenge
+  - intent: buy_product
+  - action: product_form
+  - active_loop: product_form
+  - slot_was_set:
+    - requested_slot: product_category
+  - intent: inform_product_category
+    entities:
+    - product_category: cooats
+  - slot_was_set:
+    - product_category: cooats
+  - intent: inform_product_category
+    entities:
+    - product_category: cooats
+  - action: product_form
+  - slot_was_set:
+    - product_category: null
+  - slot_was_set:
+    - requested_slot: product_category
+  - intent: inform_product_category
+    entities:
+    - product_category: hoodies
+  - slot_was_set:
+    - product_category: hoodies
+  - action: product_form
+  - slot_was_set:
+    - product_category: hoodies
+  - slot_was_set:
+    - requested_slot: product_color
+  - intent: stop
+  - action: utter_ask_continue
+  - intent: affirm
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_reset_product_form
+  - slot_was_set:
+    - product_category: null
+  - slot_was_set:
+    - product_color: null
+  - slot_was_set:
+    - product_size: null
+  - slot_was_set:
+    - product_name: null
+  - slot_was_set:
+    - product_quantity: null
+  - intent: goodbye
+  - action: utter_goodbye
