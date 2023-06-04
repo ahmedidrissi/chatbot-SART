@@ -101,61 +101,61 @@ stories:
     - action: utter_goodbye
     - intent: stop
 
-- story: interactive_story_2
-  steps:
-  - intent: greet_with_name
-    entities:
-    - user_name: zakaria charkaoui
-  - slot_was_set:
-    - user_name: zakaria charkaoui
-  - action: utter_greet_with_name
-  - intent: bot_challenge
-  - action: utter_bot_challenge
-  - intent: buy_product
-  - action: product_form
-  - active_loop: product_form
-  - slot_was_set:
-    - requested_slot: product_category
-  - intent: inform_product_category
-    entities:
-    - product_category: cooats
-  - slot_was_set:
-    - product_category: cooats
-  - intent: inform_product_category
-    entities:
-    - product_category: cooats
-  - action: product_form
-  - slot_was_set:
-    - product_category: null
-  - slot_was_set:
-    - requested_slot: product_category
-  - intent: inform_product_category
-    entities:
-    - product_category: hoodies
-  - slot_was_set:
-    - product_category: hoodies
-  - action: product_form
-  - slot_was_set:
-    - product_category: hoodies
-  - slot_was_set:
-    - requested_slot: product_color
-  - intent: stop
-  - action: utter_ask_continue
-  - intent: affirm
-  - action: action_deactivate_loop
-  - active_loop: null
-  - slot_was_set:
-    - requested_slot: null
-  - action: action_reset_product_form
-  - slot_was_set:
-    - product_category: null
-  - slot_was_set:
-    - product_color: null
-  - slot_was_set:
-    - product_size: null
-  - slot_was_set:
-    - product_name: null
-  - slot_was_set:
-    - product_quantity: null
-  - intent: goodbye
-  - action: utter_goodbye
+  - story: interactive_story_2
+    steps:
+    - intent: greet_with_name
+      entities:
+      - user_name: zakaria charkaoui
+    - slot_was_set:
+      - user_name: zakaria charkaoui
+    - action: utter_greet_with_name
+    - intent: bot_challenge
+    - action: utter_bot_challenge
+    - intent: buy_product
+    - action: product_form
+    - active_loop: product_form
+    - slot_was_set:
+      - requested_slot: product_category
+    - intent: inform_product_category
+      entities:
+      - product_category: cooats
+    - slot_was_set:
+      - product_category: cooats
+    - intent: inform_product_category
+      entities:
+      - product_category: cooats
+    - action: product_form
+    - slot_was_set:
+      - product_category: null
+    - slot_was_set:
+      - requested_slot: product_category
+    - intent: inform_product_category
+      entities:
+      - product_category: hoodies
+    - slot_was_set:
+      - product_category: hoodies
+    - action: product_form
+    - slot_was_set:
+      - product_category: hoodies
+    - slot_was_set:
+      - requested_slot: product_color
+    - intent: stop
+    - action: utter_ask_continue
+    - intent: affirm
+    - action: action_deactivate_loop
+    - active_loop: null
+    - slot_was_set:
+      - requested_slot: null
+    - action: action_reset_product_form
+    - slot_was_set:
+      - product_category: null
+    - slot_was_set:
+      - product_color: null
+    - slot_was_set:
+      - product_size: null
+    - slot_was_set:
+      - product_name: null
+    - slot_was_set:
+      - product_quantity: null
+    - intent: goodbye
+    - action: utter_goodbye
