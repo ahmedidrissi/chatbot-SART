@@ -65,16 +65,17 @@ class mySGBD():
     
     #update the quantity of the ordered product
     def update_quantity(self, product, color, size, ordered_quantity):
-        # search for product name in allowed_prd, get the product id
-        # search for color in allowed_prd_c, get the color id
-        # reduce the product quantity in the prd_s table then prd_c table then prd table
-        # if the quantity become null delete the product 
         
-        self.prd_s.loc[(self.prd_s['product_id'] == product.id) & (self.prd_s['color_id'] == color.id) & (self.prd_s['size'].str.lower() == size.lower()), 'size_quantity'] -= ordered_quantity
+        self.prd_s.loc[(self.prd_s['product_id'] == product.id) & \
+                        (self.prd_s['color_id'] == color.id) & \
+                        (self.prd_s['size'].str.lower() == size.lower()), \
+                        'size_quantity'] -= ordered_quantity
         
         self.prd_s = self.prd_s[self.prd_s['size_quantity'] > 0]
         
-        self.prd_c.loc[(self.prd_c['product_id'] == product.id) & (self.prd_c['id'] == color.id), 'color_quantity'] -= ordered_quantity
+        self.prd_c.loc[(self.prd_c['product_id'] == product.id) & \
+                       (self.prd_c['id'] == color.id), \
+                        'color_quantity'] -= ordered_quantity
 
         self.prd_c = self.prd_c[self.prd_c['color_quantity'] > 0]
 

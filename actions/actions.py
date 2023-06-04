@@ -26,9 +26,11 @@ class ValidateProductForm(FormValidationAction):
         """Validate `product_category` value."""
 
         if slot_value.lower() not in sgbd.allowed_categories:
-            dispatcher.utter_message(text=f"We only accept those categories: {', '.join(sgbd.allowed_categories)}.")
+            dispatcher.utter_message(text=f"We only accept those categories: \
+                                     {', '.join(sgbd.allowed_categories)}.")
             return {"product_category": None}
-        dispatcher.utter_message(text=f"We have in {slot_value} category those colors: {', '.join(sgbd.get_colors_by_category(slot_value))}.")
+        dispatcher.utter_message(text=f"We have in {slot_value} category those colors: \
+                                 {', '.join(sgbd.get_colors_by_category(slot_value))}.")
         return {"product_category": slot_value}
 
     def validate_product_color(
