@@ -15,7 +15,7 @@ window.addEventListener('load', function() {
   document.querySelector('.msg-info-time').textContent = formatDate(new Date());
 });
 
-msgerForm.addEventListener('submit', event => {
+msgerForm.addEventListener('submit', async event => {
   event.preventDefault();
   
   const msgText = msgerInput.value;
@@ -23,6 +23,11 @@ msgerForm.addEventListener('submit', event => {
 
   appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
   msgerInput.value = "";
+
+  if (recognition.lang == 'fr-FR') {
+    msgText = await translateMessage(msgText, 'en');
+    console.log(msgText);
+  }
 
   fetch('http://localhost:5005/webhooks/rest/webhook', {
     method: 'POST',
@@ -37,15 +42,21 @@ msgerForm.addEventListener('submit', event => {
     return Promise.all(promises);
   })
   .then(botResponses => {
-    botResponses.forEach(botResp => {
+    botResponses.forEach(async botResp => {
+      if (recognition.lang == 'fr-FR') {
+        botResp = await translateMessage(botResp, 'fr');
+      }
       appendMessage(BOT_NAME, BOT_IMG, "left", botResp);
       utterance.text = botResp;
       synthesis.speak(utterance);
     });
   })
-  .catch(error => {
+  .catch(async error => {
     console.error(error);
     let botResp = "Can you repeat please?";
+    if (recognition.lang == 'fr-FR') {
+      botResp = "pouvez-vous repetez svp";
+    }
     appendMessage(BOT_NAME, BOT_IMG, "left", botResp);
     utterance.text = botResp;
     synthesis.speak(utterance);
@@ -54,7 +65,12 @@ msgerForm.addEventListener('submit', event => {
 
 function greetUser() {
   if (!greet) {
-    const msg = "Hi, I'm SART! Go ahead and send me a message.";
+    let msg = "Hi, I'm SART! Go ahead and send me a message.";
+    
+    if (recognition.lang == 'fr-FR') {
+      msg = "Bonjour, je suis PolyLangBot! Allez y et envoyez-moi un message.";
+    }
+
     setTimeout(() => {
       appendMessage(BOT_NAME, BOT_IMG, "left", msg);
     }, 1000);
@@ -94,4 +110,25 @@ function formatDate(date) {
   const m = "0" + date.getMinutes();
 
   return `${h.slice(-2)}:${m.slice(-2)}`;
+}
+
+function translateMessage(message, language) {
+  let result = fetch('/index', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      'userMessage' : message, 'lang' : language
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log(data.translatedMessage);
+    return data.translatedMessage;
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+  return result;
 }
