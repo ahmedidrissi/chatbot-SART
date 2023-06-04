@@ -20,12 +20,12 @@ intents:
 - stop
 - thanks
 entities:
+- user_name
+- product_name
+- product_category
 - product_size
 - product_color
-- product_category
 - product_quantity
-- product_name
-- user_name
 - product_material
 - product_brand
 slots:
@@ -142,11 +142,13 @@ responses:
   utter_show_report:
   - text: The report is being generated. Please wait for a moment.
 actions:
+- utter_bot_challenge
+- utter_ask_continue
+- utter_goodbye
+- utter_greet_with_name
+- action_reset_product_form
 - action_submit_product_form
 - utter_help
-- utter_bot_challenge
-- action_reset_product_form
-- utter_goodbye
 - utter_greet
 - validate_product_form
 session_config:

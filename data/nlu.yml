@@ -22,9 +22,11 @@ nlu:
     - hey there i am [Samira Alaoui](user_name)
     - hi my name is [Omar Ibn Sina](user_name)
     - hello i'm [Ahmed Idrissi](user_name)
+    - hi i'm [zakaria cherkaoui](user_name)
     - hey there my name is [Mustapha Khalid](user_name)
     - hi i'm [Salim](user_name)
     - good morning i'm [Marieme Benzha](user_name)
+    - hi i'm [zakaria charkaoui](user_name)
 - intent: thanks
   examples: |
     - Thank you
@@ -49,6 +51,7 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
     - who are u?
+    - who are u
 - intent: bot_age
   examples: |
     - What's your age?
@@ -80,6 +83,7 @@ nlu:
     - please stop
     - i want to stop
     - stop the form
+    - stop pls
 - intent: goodbye
   examples: |
     - cu
@@ -111,6 +115,9 @@ nlu:
     - [jeans](product_category)
     - [coats](product_category) category please
     - i want [jeans](product_category)
+    - i want some [hoodies](product_category)
+    - i want [hoodies](product_category)
+    - i want some [jeans](product_category)
 - intent: inform_product_color
   examples: |
     - [red](product_color)
@@ -135,7 +142,6 @@ nlu:
     - [edgy skinny jeans](product_name)
     - [modern shoes](product_name)
     - [denim jacket](product_name) please
-    - [ripped skinny jeans](product_name)
     - [ripped skinny jeans](product_name)
 - intent: inform_product_brand
   examples: |
