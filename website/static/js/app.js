@@ -18,7 +18,7 @@ window.addEventListener('load', function() {
 msgerForm.addEventListener('submit', async event => {
   event.preventDefault();
   
-  const msgText = msgerInput.value;
+  var msgText = msgerInput.value;
   if (!msgText) return;
 
   appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
@@ -38,13 +38,16 @@ msgerForm.addEventListener('submit', async event => {
   })
   .then(response => response.json())
   .then(data => {
-    const promises = data.map(item => item.text);
+    let promises = data.map(item => item.text);
     return Promise.all(promises);
   })
   .then(botResponses => {
     botResponses.forEach(async botResp => {
       if (recognition.lang == 'fr-FR') {
         botResp = await translateMessage(botResp, 'fr');
+        if (!botResp) {
+          botResp = "Pouvez-vous répétez s'il vous plaît."
+        }
       }
       appendMessage(BOT_NAME, BOT_IMG, "left", botResp);
       utterance.text = botResp;
@@ -55,7 +58,7 @@ msgerForm.addEventListener('submit', async event => {
     console.error(error);
     let botResp = "Can you repeat please?";
     if (recognition.lang == 'fr-FR') {
-      botResp = "pouvez-vous repetez svp";
+      botResp = "Pouvez-vous répétez s'il vous plaît.";
     }
     appendMessage(BOT_NAME, BOT_IMG, "left", botResp);
     utterance.text = botResp;
@@ -83,7 +86,7 @@ function greetUser() {
 
 function appendMessage(name, img, side, text) {
   //   Simple solution for small apps
-  const msgHTML = `
+  let msgHTML = `
     <div class="msg ${side}-msg">
       <div class="msg-bubble">
         <div class="msg-info">
@@ -124,7 +127,6 @@ function translateMessage(message, language) {
   })
   .then(response => response.json())
   .then(data => {
-    console.log(data.translatedMessage);
     return data.translatedMessage;
   })
   .catch(error => {
