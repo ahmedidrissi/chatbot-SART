@@ -68,7 +68,7 @@ function greetUser() {
     let msg = "Hi, I'm SART! Go ahead and send me a message.";
     
     if (recognition.lang == 'fr-FR') {
-      msg = "Bonjour, je suis PolyLangBot! Allez y et envoyez-moi un message.";
+      msg = "Bonjour, je suis SART! Allez-y et envoyez-moi un message.";
     }
 
     setTimeout(() => {

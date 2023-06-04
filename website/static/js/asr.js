@@ -17,7 +17,10 @@ function changeLanguage(lang) {
         utterance.voice = voices[1];
     } else {
         utterance.voice = voices[4];
-    }        
+    }
+
+    greet = false;
+    greetUser();
 };
 
 document.querySelector("#mic").onclick = () => {
