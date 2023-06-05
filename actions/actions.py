@@ -92,7 +92,7 @@ class ValidateProductForm(FormValidationAction):
         return {"product_quantity": slot_value}
     
 class SubmitProductForm(Action):
-    def name(self) -> Text:
+    def name(self):
         return "action_submit_product_form"
 
     def run(
@@ -104,11 +104,8 @@ class SubmitProductForm(Action):
         """Submit the order and update the quantity of the ordered product."""
         # submit the order
 
-        product_name = tracker.get_slot("product_name")
-        color = tracker.get_slot("product_color")
-        size = tracker.get_slot("product_size")
         ordered_quantity = tracker.get_slot("product_quantity")
-        sgbd.update_quantity(product_name, color, size, ordered_quantity)
+        sgbd.update_quantity(ordered_quantity)
         dispatcher.utter_message(text="Your order has been successfully placed.")
         return []
 
