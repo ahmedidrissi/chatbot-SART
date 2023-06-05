@@ -44,14 +44,25 @@ rules:
   - intent: goodbye
   - action: utter_goodbye
 
+- rule: stop form
+  condition:
+  - active_loop: product_form
+  steps:
+  - intent: stop
+  - action: utter_ask_continue
+
 # rule to handle cancel order
 - rule: cancel_order
+  condition:
+  - active_loop: product_form
   steps:
   - intent: cancel_order
   - action: utter_cancel_order
 
 # rule to handle showing inventory report
 - rule: show_report
+  condition:
+  - active_loop: product_form
   steps:
   - intent: show_report
   - action: utter_show_report
