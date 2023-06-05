@@ -43,9 +43,11 @@ class ValidateProductForm(FormValidationAction):
         """Validate `product_color` value."""
         
         if slot_value not in sgbd.allowed_colors:
-            dispatcher.utter_message(text=f"I don't recognize the color. We serve {', '.join(sgbd.allowed_colors)} in this category.")
+            dispatcher.utter_message(text=f"I don't recognize the color.\
+                                      We serve {', '.join(sgbd.allowed_colors)} in this category.")
             return {"product_color": None}
-        dispatcher.utter_message(text=f"You want to have the {slot_value} color. We have those sizes: {', '.join(sgbd.get_sizes_by_color(slot_value))}")
+        dispatcher.utter_message(text=f"You want to have the {slot_value} color. \
+                                 We have those sizes: {', '.join(sgbd.get_sizes_by_color(slot_value))}")
         return {"product_color": slot_value}
     
     def validate_product_size(
@@ -60,7 +62,8 @@ class ValidateProductForm(FormValidationAction):
         if slot_value.lower() not in sgbd.allowed_sizes:
             dispatcher.utter_message(text=f"We only have thoses sizes: {', '.join(sgbd.allowed_sizes)}.")
             return {"product_size": None}
-        dispatcher.utter_message(text=f"You want to have the {slot_value} size. We have those products in stock: {', '.join(sgbd.get_product_name_by_size(slot_value))}.")
+        dispatcher.utter_message(text=f"You want to have the {slot_value} size. \
+                                 We have those products in stock: {', '.join(sgbd.get_product_name_by_size(slot_value))}.")
         return {"product_size": slot_value}
         
     def validate_product_name(
@@ -73,7 +76,8 @@ class ValidateProductForm(FormValidationAction):
         """Validate `product_name` value."""
 
         if slot_value.lower() not in sgbd.allowed_products:
-            dispatcher.utter_message(text=f"We only have those products in stock: {', '.join(sgbd.allowed_products)}.")
+            dispatcher.utter_message(text=f"We only have those products in stock: \
+                                     {', '.join(sgbd.allowed_products)}.")
             return {"product_name": None}
         dispatcher.utter_message(text=f"We have {sgbd.get_product_quantity_by_size()} from {slot_value}")
         return {"product_name": slot_value}
