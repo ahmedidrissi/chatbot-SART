@@ -66,21 +66,13 @@ class mySGBD():
     #update the quantity of the ordered product
     def update_quantity(self, product, color, size, ordered_quantity):
         
-        self.prd_s.loc[(self.prd_s['product_id'] == product.id) & \
-                        (self.prd_s['color_id'] == color.id) & \
-                        (self.prd_s['size'].str.lower() == size.lower()), \
-                        'size_quantity'] -= ordered_quantity
-        
+        self.prd_s.loc[(self.prd_s['product_id'] == product.id) & (self.prd_s['color_id'] == color.id) & (self.prd_s['size'].str.lower() == size.lower()), 'size_quantity'] -= ordered_quantity
         self.prd_s = self.prd_s[self.prd_s['size_quantity'] > 0]
         
-        self.prd_c.loc[(self.prd_c['product_id'] == product.id) & \
-                       (self.prd_c['id'] == color.id), \
-                        'color_quantity'] -= ordered_quantity
-
+        self.prd_c.loc[(self.prd_c['product_id'] == product.id) & (self.prd_c['id'] == color.id), 'color_quantity'] -= ordered_quantity
         self.prd_c = self.prd_c[self.prd_c['color_quantity'] > 0]
 
         self.prd.loc[self.prd['id'] == product.id, 'quantity'] -= ordered_quantity
-
         self.prd = self.prd[self.prd['quantity'] > 0]
 
 
@@ -88,21 +80,23 @@ class mySGBD():
     
 if __name__ == '__main__':
 
-    #code to test the functions
-    sgbd = mySGBD()
-    categories = sgbd.allowed_categories
+    # #code to test the functions
+    # sgbd = mySGBD()
+    # categories = sgbd.allowed_categories
 
-    colors = sgbd.get_colors_by_category('jeans')
-    print(sgbd.allowed_prd)
-    print(colors)
+    # colors = sgbd.get_colors_by_category('jeans')
+    # print(sgbd.allowed_prd)
+    # print(colors)
 
-    sizes = sgbd.get_sizes_by_color('blue')
-    print(sgbd.allowed_prd_c)
-    print(sgbd.allowed_prd_s)
-    print(sizes)
+    # sizes = sgbd.get_sizes_by_color('blue')
+    # print(sgbd.allowed_prd_c)
+    # print(sgbd.allowed_prd_s)
+    # print(sizes)
 
-    products = sgbd.get_product_name_by_size('s')
-    print(products) # empty list because there is a problem in the Database!
+    # products = sgbd.get_product_name_by_size('s')
+    # print(products) # empty list because there is a problem in the Database!
 
-    quantities = sgbd.get_product_quantity_by_size()
-    print(quantities)
+    # quantities = sgbd.get_product_quantity_by_size()
+    # print(quantities)
+    
+    pass
