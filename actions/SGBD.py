@@ -7,6 +7,7 @@ class mySGBD():
         self.prd_c = pd.read_csv("./actions/product_colors.csv",sep=',')
         self.prd_s = pd.read_csv("./actions/product_sizes.csv",sep=',')
         
+        self.prd['category'] = self.prd['category'].str.lower()
         self.prd_c['color'] = self.prd_c['color'].str.lower()
         self.prd_s['size'] = self.prd_s['size'].str.lower()
 
@@ -80,13 +81,14 @@ class mySGBD():
     
 if __name__ == '__main__':
 
-    # #code to test the functions
-    # sgbd = mySGBD()
-    # categories = sgbd.allowed_categories
+    #code to test the functions
+    sgbd = mySGBD()
+    categories = sgbd.allowed_categories
+    print(categories)
 
-    # colors = sgbd.get_colors_by_category('jackets')
-    # print(sgbd.allowed_prd)
-    # print(colors)
+    colors = sgbd.get_colors_by_category('coats')
+    print(sgbd.allowed_prd)
+    print(colors)
 
     # sizes = sgbd.get_sizes_by_color('black')
     # print(sgbd.allowed_prd_c)

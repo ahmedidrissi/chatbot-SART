@@ -114,6 +114,7 @@ nlu:
     - I want [shoes](product_category)
     - [jeans](product_category)
     - [coats](product_category) category please
+    - do u have [coats](product_category)
     - i want [jeans](product_category)
     - i want some [hoodies](product_category)
     - i want [hoodies](product_category)
