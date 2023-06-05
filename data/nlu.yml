@@ -143,16 +143,17 @@ nlu:
 - intent: inform_product_name
   examples: |
     - I want the [blue jean](product_name)
-    - I'm interested in the [edgy and stylish ripped skinny jeans](product_name)
-    - [sophisticated and comfortable wide-leg pants](product_name)
+    - I'm interested in the [edgy and stylish ripped skinny jean](product_name)
+    - [sophisticated and comfortable wide-leg pant](product_name)
     - [faux leather jacket](product_name) please
     - [denim jacket](product_name)
     - [edgy skinny jeans](product_name)
     - [modern shoes](product_name)
     - [denim jacket](product_name) please
-    - [ripped skinny jeans](product_name)
+    - [ripped skinny jean](product_name)
     - i want [Bomber Jacket](product_name) 
     - [Bomber Jacket](product_name)
+    - [slim fit jean](product_name)
 - intent: inform_product_brand
   examples: |
     - brand : [zara](product_brand)
