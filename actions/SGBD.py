@@ -4,8 +4,8 @@ class mySGBD():
     def __init__(self) -> None:
         # initialize the tables
         self.prd = pd.read_csv("./actions/products.csv", sep=',')
-        self.prd_c = pd.read_csv("./actions/product_color.csv",sep=',')
-        self.prd_s = pd.read_csv("./actions/product_size.csv",sep=',')
+        self.prd_c = pd.read_csv("./actions/product_colors.csv",sep=',')
+        self.prd_s = pd.read_csv("./actions/product_sizes.csv",sep=',')
         
         self.prd_c['color'] = self.prd_c['color'].str.lower()
         self.prd_s['size'] = self.prd_s['size'].str.lower()
@@ -84,17 +84,17 @@ if __name__ == '__main__':
     # sgbd = mySGBD()
     # categories = sgbd.allowed_categories
 
-    # colors = sgbd.get_colors_by_category('jeans')
+    # colors = sgbd.get_colors_by_category('jackets')
     # print(sgbd.allowed_prd)
     # print(colors)
 
-    # sizes = sgbd.get_sizes_by_color('blue')
+    # sizes = sgbd.get_sizes_by_color('black')
     # print(sgbd.allowed_prd_c)
     # print(sgbd.allowed_prd_s)
     # print(sizes)
 
-    # products = sgbd.get_product_name_by_size('s')
-    # print(products) # empty list because there is a problem in the Database!
+    # products = sgbd.get_product_name_by_size('xl')
+    # print(products) 
 
     # quantities = sgbd.get_product_quantity_by_size()
     # print(quantities)
