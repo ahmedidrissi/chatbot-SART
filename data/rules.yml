@@ -124,3 +124,8 @@ rules:
   steps:
   - intent: nlu_fallback
   - action: utter_please_rephrase
+
+- rule: say ok when user says yes
+  steps:
+  - intent: affirm
+  - action: utter_ok
