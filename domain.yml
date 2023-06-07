@@ -145,6 +145,8 @@ responses:
   - text: Sorry, I can't handle that request.
   utter_please_rephrase:
   - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+  utter_ok:
+  - text: Ok.
 actions:
 - utter_bot_challenge
 - utter_ask_continue
