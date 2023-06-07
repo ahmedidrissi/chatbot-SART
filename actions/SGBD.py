@@ -72,6 +72,8 @@ class mySGBD():
         product_id = allowed_prd_s_list[1]
         color_id = allowed_prd_s_list[2]
         size = allowed_prd_s_list[3]
+
+        ordered_quantity = int(ordered_quantity)
         
         self.prd_s.loc[(self.prd_s['product_id'] == product_id) & (self.prd_s['color_id'] == color_id) & (self.prd_s['size'].str.lower() == size), 'size_quantity'] -= ordered_quantity
         self.prd_s = self.prd_s[self.prd_s['size_quantity'] > 0]
