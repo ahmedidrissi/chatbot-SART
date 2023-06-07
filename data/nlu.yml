@@ -114,6 +114,7 @@ nlu:
     - I want [shoes](product_category)
     - [jeans](product_category)
     - [coats](product_category) category please
+    - do u have [coats](product_category)
     - i want [jeans](product_category)
     - i want some [hoodies](product_category)
     - i want [hoodies](product_category)
@@ -142,16 +143,17 @@ nlu:
 - intent: inform_product_name
   examples: |
     - I want the [blue jean](product_name)
-    - I'm interested in the [edgy and stylish ripped skinny jeans](product_name)
-    - [sophisticated and comfortable wide-leg pants](product_name)
+    - I'm interested in the [edgy and stylish ripped skinny jean](product_name)
+    - [sophisticated and comfortable wide-leg pant](product_name)
     - [faux leather jacket](product_name) please
     - [denim jacket](product_name)
     - [edgy skinny jeans](product_name)
     - [modern shoes](product_name)
     - [denim jacket](product_name) please
-    - [ripped skinny jeans](product_name)
+    - [ripped skinny jean](product_name)
     - i want [Bomber Jacket](product_name) 
     - [Bomber Jacket](product_name)
+    - [slim fit jean](product_name)
 - intent: inform_product_brand
   examples: |
     - brand : [zara](product_brand)
@@ -176,3 +178,30 @@ nlu:
     - How is my inventory doing?
     - Can you give me an overview of my stock levels?
     - Show me a report of my stock levels
+- intent: out_of_scope
+  examples: |
+    - jhdkjdhksdkfa
+    - hahaha
+    - blablabla
+    - What's the weather like in Paris?
+    - Tell me a joke.
+    - Can you recommend a good restaurant in New York?
+    - How can I apply for a job at your company?
+    - What is the meaning of life?
+    - What is the capital of Australia?
+    - Can you book a flight for me?
+    - How do I fix my broken car engine?
+    - Can you help me with my math homework?
+    - What are the latest stock market trends?
+    - sdfhjklasdfsadf
+    - 1234567890
+    - asdfghjklqwerty
+    - Can you gibberish me with some zzyzx?
+    - What is the color of the number 7?
+    - How much wood could a woodchuck chuck if a woodchuck could chuck wood?
+    - What is the sound of one hand clapping?
+    - Can you teleport me to Mars?
+    - Tell me the meaning of floccinaucinihilipilification.
+    - What is the secret to eternal youth and happiness?
+    - What is 2 + 2?
+    - Who's the US President?

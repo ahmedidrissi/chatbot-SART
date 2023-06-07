@@ -141,6 +141,10 @@ responses:
   - text: The order for {product_name} has been cancelled successfully.
   utter_show_report:
   - text: The report is being generated. Please wait for a moment.
+  utter_out_of_scope:
+  - text: Sorry, I can't handle that request.
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
 actions:
 - utter_bot_challenge
 - utter_ask_continue
