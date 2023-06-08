@@ -102,51 +102,56 @@ forms:
     - product_quantity
 responses:
   utter_greet:
-  - text: Hi there! Is there anything I can help you with?
-  - text: Hey! How may I assist you with your clothing needs?
+    - text: Hi there! Is there anything I can help you with?
+    - text: Hey! How may I assist you with your clothing needs?
   utter_greet_with_name:
-  - text: Hello {user_name}! Welcome to our clothing store. How can I assist you today?
-  - text: Hello {user_name}! How can I help you find the perfect outfit today?
-  - text: Good day {user_name}! What can I help you find today?
+    - text: Hello {user_name}! Welcome to our clothing store. How can I assist you today?
+    - text: Hello {user_name}! How can I help you find the perfect outfit today?
+    - text: Good day {user_name}! What can I help you find today?
   utter_welcome:
-  - text: No problem, happy to help!
-  - text: I'm glad I could assist you!
+    - text: No problem, happy to help!
+    - text: I'm glad I could assist you!
   utter_help:
-  - text: Of course! What do you need help with?
-  - text: I'm here to assist you. What do you need help with?
+    - text: Of course! What do you need help with?
+    - text: I'm here to assist you. What do you need help with?
   utter_bot_challenge:
-  - text: I'm Chatbot SART, your personal Style Assistant and Retail Technology.
-  - text: I'm a Chatbot. My name is SART, which stands for Style Assistant and Retail Technology.
-  - text: I'm a Chatbot. Call me SART, which is short for Style Assistant and Retail Technology.
+    - text: I'm Chatbot SART, your personal Style Assistant and Retail Technology.
+    - text: I'm a Chatbot. My name is SART, which stands for Style Assistant and Retail Technology.
+    - text: I'm a Chatbot. Call me SART, which is short for Style Assistant and Retail Technology.
   utter_bot_age:
-  - text: Same as yours
+    - text: Same as yours
   utter_goodbye:
-  - text: Goodbye! Have a nice day.
-  - text: Bye! Take care!
-  - text: Goodbye! Have a great day!
-  - text: See you later!
+    - text: Goodbye! Have a nice day.
+    - text: Bye! Take care!
+    - text: Goodbye! Have a great day!
+    - text: See you later!
   utter_ask_continue:
-  - text: Are you sure you want to stop the form?
+    - text: Are you sure you want to stop the form?
+      buttons:
+      - title: "Yes"
+        payload: /affirm
+      - title: "No"
+        payload: /deny
   utter_ask_product_category:
-  - text: what category are you looking for ?
+    - text: what category are you looking for ?
   utter_ask_product_color:
-  - text: what color would you like ?
+    - text: what color would you like ?
   utter_ask_product_size:
-  - text: What size would you like ?
+    - text: What size would you like ?
   utter_ask_product_name:
-  - text: what product do you want ?
+    - text: what product do you want ?
   utter_ask_product_quantity:
-  - text: How much of {product_name} you want?
+    - text: How much of {product_name} you want?
   utter_cancel_order:
-  - text: The order for {product_name} has been cancelled successfully.
+    - text: The order for {product_name} has been cancelled successfully.
   utter_show_report:
-  - text: The report is being generated. Please wait for a moment.
+    - text: The report is being generated. Please wait for a moment.
   utter_out_of_scope:
-  - text: Sorry, I can't handle that request.
+    - text: Sorry, I can't handle that request.
   utter_please_rephrase:
-  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+    - text: I'm sorry, I didn't quite understand that. Could you rephrase?
   utter_ok:
-  - text: Ok.
+    - text: Ok.
 actions:
 - utter_bot_challenge
 - utter_ask_continue
