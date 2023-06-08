@@ -10,6 +10,7 @@ const BOT_NAME = "SART";
 const PERSON_NAME = "User";
 
 var greet = false;
+var buttons = null;
 
 window.addEventListener('load', function() {
   document.querySelector('.msg-info-time').textContent = formatDate(new Date());
@@ -29,41 +30,7 @@ msgerForm.addEventListener('submit', async event => {
     console.log(msgText);
   }
 
-  fetch('http://localhost:5005/webhooks/rest/webhook', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ 'sender' : 'user', 'message' : msgText })
-  })
-  .then(response => response.json())
-  .then(data => {
-    let promises = data.map(item => item.text);
-    return Promise.all(promises);
-  })
-  .then(botResponses => {
-    botResponses.forEach(async botResp => {
-      if (recognition.lang == 'fr-FR') {
-        botResp = await translateMessage(botResp, 'fr');
-        if (!botResp) {
-          botResp = "Pouvez-vous répétez s'il vous plaît."
-        }
-      }
-      appendMessage(BOT_NAME, BOT_IMG, "left", botResp);
-      utterance.text = botResp;
-      synthesis.speak(utterance);
-    });
-  })
-  .catch(async error => {
-    console.error(error);
-    let botResp = "Can you repeat please?";
-    if (recognition.lang == 'fr-FR') {
-      botResp = "Pouvez-vous répétez s'il vous plaît.";
-    }
-    appendMessage(BOT_NAME, BOT_IMG, "left", botResp);
-    utterance.text = botResp;
-    synthesis.speak(utterance);
-  });
+  sendMessage(msgText);
 });
 
 function greetUser() {
@@ -84,6 +51,55 @@ function greetUser() {
   }
 }
 
+function sendMessage(msg) {
+  fetch('http://localhost:5005/webhooks/rest/webhook', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ 'sender' : 'user', 'message' : msg })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data[0].hasOwnProperty('buttons')) {
+      buttons = data[0].buttons;
+    }
+    let promises = data.map(item => item.text);
+    return Promise.all(promises);
+  })
+  .then(botResponses => {
+    botResponses.forEach(async botResp => {
+      if (recognition.lang == 'fr-FR') {
+        botResp = await translateMessage(botResp, 'fr');
+        if (!botResp) {
+          botResp = "Pouvez-vous répétez s'il vous plaît."
+        }
+        if (buttons) {
+          buttons[0].title = "Oui";
+          buttons[1].title = "Non";
+        }
+      }
+      appendMessage(BOT_NAME, BOT_IMG, "left", botResp);
+      utterance.text = botResp;
+      synthesis.speak(utterance);
+
+      if (buttons) {
+        appendButtons();
+      }
+    });
+  })
+  .catch(async error => {
+    console.error(error);
+    let botResp = "Can you repeat please?";
+    if (recognition.lang == 'fr-FR') {
+      botResp = "Pouvez-vous répétez s'il vous plaît.";
+    }
+    appendMessage(BOT_NAME, BOT_IMG, "left", botResp);
+    utterance.text = botResp;
+    synthesis.speak(utterance);
+  });
+}
+
 function appendMessage(name, img, side, text) {
   //   Simple solution for small apps
   let msgHTML = `
@@ -101,6 +117,20 @@ function appendMessage(name, img, side, text) {
 
   msgerChat.insertAdjacentHTML("beforeend", msgHTML);
   msgerChat.scrollTop += 500;
+}
+
+function appendButtons() {
+  //   Simple solution for small apps
+  let msgHTML = `
+    <div class="bot-buttons">
+      <button class="btn" onclick="sendMessage('${buttons[0].payload}')">${buttons[0].title}</button>
+      <button class="btn" onclick="sendMessage('${buttons[1].payload}')">${buttons[1].title}</button>
+    </div>
+  `;
+
+  msgerChat.insertAdjacentHTML("beforeend", msgHTML);
+  msgerChat.scrollTop += 500;
+  buttons = null;
 }
 
 // Utils
