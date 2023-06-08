@@ -56,7 +56,7 @@ rules:
   - active_loop: product_form
   steps:
   - intent: affirm
-  - actiom: utter_ok
+  - action: utter_ok
   - action: action_deactivate_loop
   - active_loop: null
   - action: action_reset_product_form
