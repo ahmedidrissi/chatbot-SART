@@ -99,7 +99,6 @@ stories:
     - action: action_reset_product_form
     - intent: goodbye
     - action: utter_goodbye
-    - intent: stop
 
   - story: interactive_story_2
     steps:
@@ -142,6 +141,7 @@ stories:
     - intent: stop
     - action: utter_ask_continue
     - intent: affirm
+    - action: utter_ok
     - action: action_deactivate_loop
     - active_loop: null
     - slot_was_set:
